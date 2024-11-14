@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://2nslrogj301d"]
+
+[ext_resource type="PackedScene" uid="uid://bcsm701v4udr4" path="res://Art/Player/Elemental Dragon Toon.FBX" id="1_0yk7e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ac0e5"]
+height = 3.59676
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.21703, 0.518197)
+shape = SubResource("CapsuleShape3D_ac0e5")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Elemental Dragon Toon" parent="Pivot" instance=ExtResource("1_0yk7e")]
