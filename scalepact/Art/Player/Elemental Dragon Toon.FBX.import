@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Material #25": {
 "use_external/enabled": true,
-"use_external/path": "res://Art/Player/Materials/Material #25.tres"
+"use_external/path": "res://Art/Player/Materials/DragonBody.tres"
 },
 "Material #26": {
 "use_external/enabled": true,
