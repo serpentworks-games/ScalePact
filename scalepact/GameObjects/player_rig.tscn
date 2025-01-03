@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clx2rb1pyx56u"]
+
+[ext_resource type="PackedScene" uid="uid://bcsm701v4udr4" path="res://Art/Player/Elemental Dragon Toon.FBX" id="1_pwtfc"]
+
+[node name="Rig" type="Node3D"]
+
+[node name="Elemental Dragon Toon" parent="." instance=ExtResource("1_pwtfc")]
+
+[editable path="Elemental Dragon Toon"]

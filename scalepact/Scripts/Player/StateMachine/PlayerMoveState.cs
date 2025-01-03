@@ -1,6 +1,3 @@
-using Godot;
-using Scalepact.StateMachines;
-
 namespace Scalepact.Player
 {
 	public partial class PlayerMoveState : PlayerBaseState

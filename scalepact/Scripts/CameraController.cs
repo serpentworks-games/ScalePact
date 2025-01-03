@@ -1,12 +1,12 @@
 using Godot;
-using System;
 
 public partial class CameraController : Node3D
 {
 	[ExportCategory("Camera Variables")]
 	[Export] public float MouseSensitivity { get; private set; } = 0.001f;
-	[Export] public float LowerCameraBound { get; private set; } = -60f;
-	[Export] public float UpperCameraBound { get; private set; } = 10f;
+	[Export] public float InterpolationDecay { get; private set; } = 10f;
+	[Export] public float UpperCameraBround { get; private set; } = -60f;
+	[Export] public float LowerCameraBound { get; private set; } = -5f;
 
 	[ExportGroup("References")]
 	[Export] public Node3D HorizontalPivot { get; private set; }
@@ -24,6 +24,7 @@ public partial class CameraController : Node3D
 	public override void _PhysicsProcess(double delta)
 	{
 		HandleCameraRotation();
+		HandleSpringArmRotation((float)delta);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -51,15 +52,21 @@ public partial class CameraController : Node3D
 
 		float clampedVerticalRotation = Mathf.Clamp(
 			VerticalPivot.Rotation.X,
-			Mathf.DegToRad(LowerCameraBound),
-			Mathf.DegToRad(UpperCameraBound));
+			Mathf.DegToRad(UpperCameraBround),
+			Mathf.DegToRad(LowerCameraBound));
 
 		vertRotation.X = clampedVerticalRotation;
 
 		VerticalPivot.Rotation = vertRotation;
 
-		SpringArm3D.GlobalTransform = VerticalPivot.GlobalTransform;
-
 		LookDir = Vector2.Zero;
+	}
+
+	void HandleSpringArmRotation(float delta)
+	{
+		SpringArm3D.GlobalTransform = SpringArm3D.GlobalTransform.InterpolateWith(
+			VerticalPivot.GlobalTransform,
+			1.0f - Mathf.Exp(-InterpolationDecay * delta)
+			);
 	}
 }

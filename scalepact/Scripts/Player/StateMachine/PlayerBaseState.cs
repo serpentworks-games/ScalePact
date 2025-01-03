@@ -7,8 +7,9 @@ namespace Scalepact.Player
     {
         protected new PlayerStateMachine stateMachine;
 
-        //Local ref to the CharacterBody3D from the statemachine to avoid overly long names
+        //Local refs from the statemachine to avoid overly long names
         CharacterBody3D playerBody3D;
+        Node3D horizontalPivot;
 
         public override void _Ready()
         {
@@ -23,6 +24,8 @@ namespace Scalepact.Player
         public override void EnterState()
         {
             playerBody3D = stateMachine.PlayerCharBody3D;
+            horizontalPivot = stateMachine.CameraController.HorizontalPivot;
+
             base.EnterState();
         }
 
@@ -42,16 +45,14 @@ namespace Scalepact.Player
             if (Input.IsActionJustPressed("jump") && playerBody3D.IsOnFloor())
                 velocity.Y = stateMachine.JumpVelocity;
 
-            Vector2 inputDir = Input.GetVector(
-                "move_left", "move_right", "move_forward", "move_backward");
-            Vector3 direction =
-                (playerBody3D.Transform.Basis *
-                    new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+            Vector3 direction = GetMovementDirection();
 
             if (direction != Vector3.Zero)
             {
                 velocity.X = direction.X * stateMachine.MoveSpeed;
                 velocity.Z = direction.Z * stateMachine.MoveSpeed;
+
+                LookTowardDirection(direction, delta);
             }
             else
             {
@@ -60,6 +61,26 @@ namespace Scalepact.Player
             }
 
             playerBody3D.Velocity = velocity;
+        }
+
+        public Vector3 GetMovementDirection()
+        {
+            Vector2 inputDir = Input.GetVector(
+                "move_left", "move_right", "move_forward", "move_backward");
+
+            Vector3 inputVector = new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
+
+            return horizontalPivot.GlobalTransform.Basis * inputVector;
+        }
+
+        public void LookTowardDirection(Vector3 direction, float delta)
+        {
+            Transform3D targetTransform = stateMachine.RigPivot.GlobalTransform.LookingAt(
+                stateMachine.RigPivot.GlobalPosition + direction, Vector3.Up, true);
+
+            stateMachine.RigPivot.GlobalTransform = stateMachine.RigPivot.GlobalTransform.InterpolateWith(
+                targetTransform, 1.0f - Mathf.Exp(-stateMachine.AnimInterpolationDecay * delta)
+            );
         }
     }
 }

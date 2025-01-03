@@ -41,6 +41,14 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Art/Player/Materials/Material #26.tres"
 }
+},
+"nodes": {
+"PATH:Skeleton3D": {
+"rest_pose/external_animation_library": null,
+"rest_pose/selected_animation": "Take 001",
+"retarget/bone_map": Object(BoneMap,"resource_local_to_scene":false,"resource_name":"","profile":null,"bonemap":null,"script":null)
+
+}
 }
 }
 fbx/importer=0
