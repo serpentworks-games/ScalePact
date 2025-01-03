@@ -3,7 +3,7 @@ using Scalepact.StateMachines;
 
 namespace Scalepact.Player
 {
-	public partial class PlayerMoveState : State
+	public partial class PlayerMoveState : PlayerBaseState
 	{
 		public override void EnterState()
 		{
@@ -18,19 +18,15 @@ namespace Scalepact.Player
 		public override void _PhysicsProcess(double delta)
 		{
 			base._PhysicsProcess(delta);
+
+			CalculateVelocity((float)delta);
+
+			stateMachine.PlayerCharBody3D.MoveAndSlide();
 		}
 
 		public override void ExitState()
 		{
 			base.ExitState();
-		}
-
-		public override void _Input(InputEvent @event)
-		{
-			if (Input.IsActionPressed("ui_up"))
-			{
-				ChangeState(PlayerStringRefs.PlayerIdleState);
-			}
 		}
 	}
 }

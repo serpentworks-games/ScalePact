@@ -4,7 +4,7 @@ namespace Scalepact.StateMachines
 {
     public partial class State : Node
     {
-        StateMachine stateMachine;
+        public StateMachine stateMachine;
 
         public override void _Ready()
         {
@@ -16,7 +16,7 @@ namespace Scalepact.StateMachines
             SetProcessesOnState(false);
         }
 
-        public void SetProcessesOnState(bool setting)
+        public virtual void SetProcessesOnState(bool setting)
         {
             SetProcess(setting);
             SetPhysicsProcess(setting);
@@ -44,20 +44,11 @@ namespace Scalepact.StateMachines
             base._PhysicsProcess(delta);
 
         }
-
-
+        
         public virtual void ExitState()
         {
             GD.Print($"Exited state: {Name}");
             return;
-        }
-
-        public void ChangeState(string state)
-        {
-            if (stateMachine != null)
-                stateMachine.ChangeState(state);
-            else
-                GD.PushError($"StateMachine reference is not set for state: {Name}");
         }
     }
 }

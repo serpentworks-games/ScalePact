@@ -40,26 +40,13 @@ namespace Scalepact.StateMachines
 
             if (currentState == newState) return;
 
-            SetActiveState(newState);
-
-        }
-
-        void SetActiveState(State newState)
-        {
-            if (currentState != null)
-            {
-                currentState.SetProcessesOnState(false);
-                currentState.ExitState();
-            }
+            currentState?.SetProcessesOnState(false);
+            currentState?.ExitState();
 
             currentState = newState;
 
-            if (currentState != null)
-            {
-                currentState.SetProcessesOnState(true);
-                currentState.EnterState();
-            }
-
+            currentState?.SetProcessesOnState(true);
+            currentState?.EnterState();
 
         }
     }
