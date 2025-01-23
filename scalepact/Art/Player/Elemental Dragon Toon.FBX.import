@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
-nodes/import_as_skeleton_bones=false
+nodes/import_as_skeleton_bones=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -46,8 +46,7 @@ _subresources={
 "PATH:Skeleton3D": {
 "rest_pose/external_animation_library": null,
 "rest_pose/selected_animation": "Take 001",
-"retarget/bone_map": Object(BoneMap,"resource_local_to_scene":false,"resource_name":"","profile":null,"bonemap":null,"script":null)
-
+"retarget/bone_map": Resource("res://Art/Player/playerBones.tres")
 }
 }
 }

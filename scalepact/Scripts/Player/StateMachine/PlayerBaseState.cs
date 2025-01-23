@@ -61,6 +61,8 @@ namespace Scalepact.Player
             }
 
             playerBody3D.Velocity = velocity;
+
+            stateMachine.UpdateMovementAnimTree(direction, velocity.Length(), delta);
         }
 
         public Vector3 GetMovementDirection()
