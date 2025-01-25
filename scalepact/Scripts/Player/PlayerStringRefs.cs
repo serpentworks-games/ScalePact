@@ -10,7 +10,7 @@ namespace Scalepact.Player
 
 		//Animations
 		public static string PlayerAnimPlayback { get => "parameters/playback"; }
-		public static string PlayerMoveBlendValue { get => "parameters/Movement/blend_position"; }
+		public static string PlayerMoveBlendValue { get => "parameters/MovementBlend/blend_position"; }
 
 	}
 }
