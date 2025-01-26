@@ -1,4 +1,5 @@
 using Godot;
+using Scalepact.Combat;
 using Scalepact.StateMachines;
 
 namespace Scalepact.Player
@@ -20,6 +21,7 @@ namespace Scalepact.Player
         public Node3D RigPivot { get; private set; }
         public Node3D Rig { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
+        public MeleeAttack MeleeAttackRayCast { get; private set; }
 
         public override void _Ready()
         {
@@ -28,6 +30,7 @@ namespace Scalepact.Player
             RigPivot = GetNode<Node3D>("../RigPivot");
             Rig = RigPivot.GetChild<Node3D>(0); //Rig itself
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
+            MeleeAttackRayCast = GetNode<MeleeAttack>("%MeleeAttackCast");
 
             base._Ready();
         }
@@ -111,7 +114,6 @@ namespace Scalepact.Player
         }
         #endregion
 
-
         #region Animation Functions
         public void AnimationRequest(string animName)
         {
@@ -132,6 +134,14 @@ namespace Scalepact.Player
                     Mathf.Clamp(velocity, 0, 1),
                     delta * AnimBlendWeight
                 ));
+        }
+        #endregion
+
+        #region Combat Code
+        public void ApplyMeleeAttack()
+        {
+            MeleeAttackRayCast.DealDamage();
+            MeleeAttackRayCast.ClearExceptions();
         }
         #endregion
 

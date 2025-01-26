@@ -7,6 +7,7 @@ namespace Scalepact.Player
         public override void EnterState()
         {
             base.EnterState();
+            stateMachine.ApplyMeleeAttack();
         }
 
         public override void _Process(double delta)

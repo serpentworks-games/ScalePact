@@ -54,5 +54,13 @@ use_collision = true
 size = Vector3(50, 10, 1)
 
 [node name="ScaleBox" type="CSGBox3D" parent="TestArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 1.08172, 0)
+use_collision = true
+
+[node name="ScaleBox2" type="CSGBox3D" parent="TestArea"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.879858, -0.22225, 4.52246)
+use_collision = true
+
+[node name="ScaleBox3" type="CSGBox3D" parent="TestArea"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.96637, 0.353861, 2.3131)
 use_collision = true
