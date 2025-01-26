@@ -6,11 +6,13 @@ namespace Scalepact.Player
 
 		//States
 		public static string PlayerMoveState { get => "MoveState"; }
-		public static string PlayerIdleState { get => "IdleState"; }
+		public static string PlayerAttackState { get => "AttackState"; }
 
 		//Animations
 		public static string PlayerAnimPlayback { get => "parameters/playback"; }
-		public static string PlayerMoveBlendValue { get => "parameters/MovementBlend/blend_position"; }
+		public static string PlayerMoveBlendValue { get => "parameters/MoveBlend/blend_amount"; }
+		public static string PlayerMeleeAttackRequest { get => "parameters/MeleeAttack/request"; }
+		public static string PlayerDeathRequest { get => "parameters/Death/request"; }
 
 	}
 }

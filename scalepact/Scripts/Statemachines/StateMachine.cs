@@ -1,8 +1,6 @@
 using Godot;
 namespace Scalepact.StateMachines
 {
-
-
     public partial class StateMachine : Node
     {
         [Export] State initialState;
