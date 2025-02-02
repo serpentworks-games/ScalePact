@@ -4,7 +4,10 @@
 
 [resource]
 resource_name = "Material #25"
-vertex_color_use_as_albedo = true
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_4fpi8")
+roughness = 0.0
 emission_enabled = true
-emission_energy_multiplier = 0.0
+rim_enabled = true
+rim_texture = ExtResource("1_4fpi8")

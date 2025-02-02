@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="ScalePact"
@@ -19,6 +23,10 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="scalepact"
+
+[editor]
+
+naming/scene_name_casing=1
 
 [input]
 

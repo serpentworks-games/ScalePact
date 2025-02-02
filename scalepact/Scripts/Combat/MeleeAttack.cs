@@ -9,10 +9,15 @@ namespace Scalepact.Combat
         {
             if (!IsColliding()) return;
 
-            CollisionObject3D collider = (CollisionObject3D)GetCollider();
+            var collider = GetCollider();
             if (collider == null) return;
             GD.Print($"We hit {collider}!");
-            AddException(collider);
+
+            if (collider is CollisionObject3D)
+            {
+                AddException((CollisionObject3D)collider);
+            }
+
         }
     }
 }
