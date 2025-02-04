@@ -12,7 +12,7 @@ namespace Scalepact.Enemies
 
         public override void _Ready()
         {
-            HealthComponent = GetNode<HealthComponent>("HealthComponent");
+            HealthComponent = GetNode<HealthComponent>("../HealthComponent");
 
             HealthComponent.UpdateMaxHealth(MaxHealth);
         }

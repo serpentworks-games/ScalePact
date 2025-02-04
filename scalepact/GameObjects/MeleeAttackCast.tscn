@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1w3jx48j7ywr"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/AttackDetection.cs" id="1_t2g7n"]
+
+[node name="MeleeAttackCast" type="RayCast3D"]
+transform = Transform3D(-0.450377, 0.892838, 1.01199e-06, -0.892838, -0.450377, -3.09523e-06, -2.37954e-06, -2.26831e-06, 1, -0.051093, 0.0308213, 8.71572e-07)
+target_position = Vector3(0, 2, 0)
+collision_mask = 8
+debug_shape_custom_color = Color(0.882353, 0, 0, 1)
+script = ExtResource("1_t2g7n")

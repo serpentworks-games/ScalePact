@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy5lmq1djweto"]
+[gd_scene load_steps=8 format=3 uid="uid://cy5lmq1djweto"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyStateMachine.cs" id="1_3u8xu"]
 [ext_resource type="AnimationLibrary" uid="uid://beh47qlnu58iu" path="res://Animations/Humanoid/TEMP_EnemyAnimLibrary.res" id="2_bhjmh"]
 [ext_resource type="PackedScene" uid="uid://bbf6ttwtueode" path="res://Art/_Enemies_TEMP/SM_Prop_SwordOrnate_01.fbx" id="2_vq338"]
 [ext_resource type="PackedScene" uid="uid://bvdaqn11tg0jw" path="res://Art/NPCRig.fbx" id="2_w1h0a"]
 [ext_resource type="PackedScene" uid="uid://iifdnv8gbmhw" path="res://GameObjects/HealthComponent.tscn" id="5_r4olu"]
+[ext_resource type="PackedScene" uid="uid://c1w3jx48j7ywr" path="res://GameObjects/MeleeAttackCast.tscn" id="6_4qhwj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqwom"]
+radius = 0.357833
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 9
@@ -20,7 +22,7 @@ script = ExtResource("1_3u8xu")
 shape = SubResource("CapsuleShape3D_pqwom")
 
 [node name="RigPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.809912, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="NPCRig" parent="RigPivot" instance=ExtResource("2_w1h0a")]
 
@@ -229,5 +231,16 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_r4olu")]
+
+[node name="MeleeAttack" type="BoneAttachment3D" parent="."]
+transform = Transform3D(0.0330547, -0.999317, -0.0164933, -0.216721, 0.00894311, -0.976193, 0.975673, 0.0358422, -0.216277, -0.793404, 0.363039, 0.0775359)
+bone_name = "RightHand"
+bone_idx = 28
+use_external_skeleton = true
+external_skeleton = NodePath("../RigPivot/NPCRig/GeneralSkeleton")
+
+[node name="MeleeAttackCast" parent="MeleeAttack" instance=ExtResource("6_4qhwj")]
+transform = Transform3D(0.509843, 0.844207, 0.165456, -0.849531, 0.463787, 0.251396, 0.135494, -0.268732, 0.953638, -0.00729715, 0.0490941, 0.0338886)
+target_position = Vector3(0, 1.25, 0)
 
 [editable path="RigPivot/NPCRig"]
