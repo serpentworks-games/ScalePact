@@ -21,7 +21,7 @@ namespace Scalepact.Player
         public Node3D RigPivot { get; private set; }
         public Node3D Rig { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
-        public MeleeAttack MeleeAttackRayCast { get; private set; }
+        public AttackDetection MeleeAttackRayCast { get; private set; }
 
         public override void _Ready()
         {
@@ -30,7 +30,7 @@ namespace Scalepact.Player
             RigPivot = GetNode<Node3D>("../RigPivot");
             Rig = RigPivot.GetChild<Node3D>(0); //Rig itself
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
-            MeleeAttackRayCast = GetNode<MeleeAttack>("%MeleeAttackCast");
+            MeleeAttackRayCast = GetNode<AttackDetection>("%MeleeAttackCast");
 
             base._Ready();
         }
