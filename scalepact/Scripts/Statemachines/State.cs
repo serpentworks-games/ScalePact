@@ -44,7 +44,7 @@ namespace Scalepact.StateMachines
             base._PhysicsProcess(delta);
 
         }
-        
+
         public virtual void ExitState()
         {
             GD.Print($"Exited state: {Name}");

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy5lmq1djweto"]
+[gd_scene load_steps=10 format=3 uid="uid://cy5lmq1djweto"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyStateMachine.cs" id="1_3u8xu"]
+[ext_resource type="Script" path="res://Scripts/Utilities/EnemyEntityAccessor.cs" id="1_eyhau"]
 [ext_resource type="AnimationLibrary" uid="uid://beh47qlnu58iu" path="res://Animations/Humanoid/TEMP_EnemyAnimLibrary.res" id="2_bhjmh"]
+[ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyMoveState.cs" id="2_fdovl"]
 [ext_resource type="PackedScene" uid="uid://bbf6ttwtueode" path="res://Art/_Enemies_TEMP/SM_Prop_SwordOrnate_01.fbx" id="2_vq338"]
 [ext_resource type="PackedScene" uid="uid://bvdaqn11tg0jw" path="res://Art/NPCRig.fbx" id="2_w1h0a"]
 [ext_resource type="PackedScene" uid="uid://iifdnv8gbmhw" path="res://GameObjects/HealthComponent.tscn" id="5_r4olu"]
@@ -10,13 +12,20 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqwom"]
 radius = 0.357833
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("StateMachine", "HealthComponent")]
 collision_layer = 9
+script = ExtResource("1_eyhau")
+StateMachine = NodePath("StateMachine")
+HealthComponent = NodePath("HealthComponent")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_3u8xu")
+MaxHealth = 7.0
 
 [node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("2_fdovl")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_r4olu")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_pqwom")
@@ -230,8 +239,6 @@ libraries = {
 "TEMP_EnemyAnimLibrary": ExtResource("2_bhjmh")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_r4olu")]
-
 [node name="MeleeAttack" type="BoneAttachment3D" parent="."]
 transform = Transform3D(0.0330547, -0.999317, -0.0164933, -0.216721, 0.00894311, -0.976193, 0.975673, 0.0358422, -0.216277, -0.793404, 0.363039, 0.0775359)
 bone_name = "RightHand"
@@ -240,7 +247,11 @@ use_external_skeleton = true
 external_skeleton = NodePath("../RigPivot/NPCRig/GeneralSkeleton")
 
 [node name="MeleeAttackCast" parent="MeleeAttack" instance=ExtResource("6_4qhwj")]
-transform = Transform3D(0.509843, 0.844207, 0.165456, -0.849531, 0.463787, 0.251396, 0.135494, -0.268732, 0.953638, -0.00729715, 0.0490941, 0.0338886)
+transform = Transform3D(0.509843, 0.844207, 0.165456, -0.849531, 0.463787, 0.251396, 0.135494, -0.268732, 0.953638, -0.00729715, 0.049094, 0.0338886)
 target_position = Vector3(0, 1.25, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[connection signal="TriggerDefeat" from="HealthComponent" to="StateMachine" method="OnHealthComponentTriggerDefeat"]
 
 [editable path="RigPivot/NPCRig"]

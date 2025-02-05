@@ -11,11 +11,13 @@ namespace Scalepact.Combat
         public float MaxHealth { get; private set; }
         public float CurrentHealth
         {
-            get => currentHealth;
+            get { return currentHealth; }
             set
             {
-                Mathf.Max(currentHealth, 0.0);
+                currentHealth = (float)Mathf.Max(value, 0.0);
+
                 if (currentHealth == 0.0) EmitSignal(SignalName.TriggerDefeat);
+
                 EmitSignal(SignalName.HealthHasChanged);
             }
         }
@@ -24,12 +26,13 @@ namespace Scalepact.Combat
         public void UpdateMaxHealth(float maxHP)
         {
             MaxHealth = maxHP;
-            currentHealth = maxHP;
+            CurrentHealth = maxHP;
         }
 
         public void TakeDamage(float damageAmount)
         {
-            currentHealth -= damageAmount;
+            CurrentHealth -= damageAmount;
+            GD.Print("CurrentHealth: " + CurrentHealth);
         }
     }
 }

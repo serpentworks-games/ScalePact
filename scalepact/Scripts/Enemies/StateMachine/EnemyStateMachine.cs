@@ -14,7 +14,16 @@ namespace Scalepact.Enemies
         {
             HealthComponent = GetNode<HealthComponent>("../HealthComponent");
 
+            GD.Print("Setting health~ " + MaxHealth);
             HealthComponent.UpdateMaxHealth(MaxHealth);
+
+            HealthComponent.TriggerDefeat += OnHealthComponentTriggerDefeat;
+        }
+
+        public void OnHealthComponentTriggerDefeat()
+        {
+            GD.Print("And thus, I die.");
+            GetParent().QueueFree();
         }
     }
 }
