@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://rpyfcr6vqlwt"]
+[gd_scene load_steps=8 format=3 uid="uid://rpyfcr6vqlwt"]
+
+[ext_resource type="PackedScene" uid="uid://ccfguhc7e2tg1" path="res://GameObjects/Player.tscn" id="1_q8s8h"]
+[ext_resource type="PackedScene" uid="uid://cy5lmq1djweto" path="res://GameObjects/BaseEnemy.tscn" id="2_8bae3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sxrdn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -63,3 +66,20 @@ size = Vector3(50, 10, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.08172, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_23j2p")
+
+[node name="Player" parent="." instance=ExtResource("1_q8s8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_8bae3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83837, 1.15, 6.25064)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("2_8bae3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83837, 1.15, 14.0983)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("2_8bae3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9305, 1.15, 14.0983)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("2_8bae3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9305, 1.15, 6.2938)

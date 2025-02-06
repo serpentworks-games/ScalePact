@@ -39,7 +39,7 @@ namespace Scalepact.Player
         public void ChangeToAttack()
         {
             ChangeState(PlayerStringRefs.PlayerAttackState);
-            AnimationRequest(PlayerStringRefs.PlayerMeleeAttackRequest);
+            OneShotAnimationRequest(PlayerStringRefs.PlayerMeleeAttackRequest);
         }
         #endregion
 
@@ -115,7 +115,7 @@ namespace Scalepact.Player
         #endregion
 
         #region Animation Functions
-        public void AnimationRequest(string animName)
+        public void OneShotAnimationRequest(string animName)
         {
             AnimationTree.Set(animName, (int)AnimationNodeOneShot.OneShotRequest.Fire);
         }
