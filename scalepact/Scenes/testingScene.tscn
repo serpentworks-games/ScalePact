@@ -1,7 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rpyfcr6vqlwt"]
-
-[ext_resource type="PackedScene" uid="uid://ccfguhc7e2tg1" path="res://GameObjects/Player.tscn" id="1_q8s8h"]
-[ext_resource type="PackedScene" uid="uid://cy5lmq1djweto" path="res://GameObjects/enemy.tscn" id="2_f2gdi"]
+[gd_scene load_steps=6 format=3 uid="uid://rpyfcr6vqlwt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sxrdn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,9 +32,6 @@ directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.2
 directional_shadow_max_distance = 20.0
 
-[node name="Player" parent="." instance=ExtResource("1_q8s8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-
 [node name="TestArea" type="Node3D" parent="."]
 
 [node name="Ground" type="CSGBox3D" parent="TestArea"]
@@ -69,6 +63,3 @@ size = Vector3(50, 10, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.08172, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_23j2p")
-
-[node name="Enemy" parent="." instance=ExtResource("2_f2gdi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36556, 0.94134, 3.0635)

@@ -14,14 +14,17 @@ namespace Scalepact.Combat
 
             var collider = GetCollider();
 
-            if (collider == null || collider is not CollisionObject3D col) return;
+            if (collider == null) return;
 
-            if (collider is EnemyEntityAccessor enemy)
+            if (collider is CollisionObject3D col)
             {
-                enemy.HealthComponent.TakeDamage(damage);
-            }
+                if (collider is EnemyEntityAccessor enemy)
+                {
+                    enemy.HealthComponent.TakeDamage(damage);
+                }
 
-            AddException(col);
+                AddException(col);
+            }
         }
     }
 }
