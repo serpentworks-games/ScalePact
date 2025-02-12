@@ -1,7 +1,6 @@
 using Godot;
 using Scalepact.Combat;
 using Scalepact.StateMachines;
-using System;
 
 namespace Scalepact.Utilities
 {

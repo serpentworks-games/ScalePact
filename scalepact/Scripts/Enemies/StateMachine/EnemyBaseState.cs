@@ -1,6 +1,5 @@
 using Godot;
 using Scalepact.StateMachines;
-using System;
 
 namespace Scalepact.Enemies
 {

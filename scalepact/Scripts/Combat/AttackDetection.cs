@@ -1,6 +1,5 @@
 using Godot;
 using Scalepact.Utilities;
-using System;
 
 namespace Scalepact.Combat
 {

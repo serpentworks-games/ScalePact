@@ -1,8 +1,6 @@
-using Godot;
-
 namespace Scalepact.Enemies
 {
-    public partial class EnemyMoveState : EnemyBaseState
+    public partial class EnemyAttackState : EnemyBaseState
     {
         public override void EnterState()
         {
@@ -17,10 +15,9 @@ namespace Scalepact.Enemies
         public override void _PhysicsProcess(double delta)
         {
             base._PhysicsProcess(delta);
-
-            if (stateMachine.IsInAttackRange())
+            if (!stateMachine.IsOneShotAnimationActive("parameters/AttackTrigger/active"))
             {
-                stateMachine.ChangeToAttack();
+                stateMachine.ChangeState("MoveState");
                 return;
             }
         }
@@ -29,5 +26,6 @@ namespace Scalepact.Enemies
         {
             base.ExitState();
         }
+
     }
 }

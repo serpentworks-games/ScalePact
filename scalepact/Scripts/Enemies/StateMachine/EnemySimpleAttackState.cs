@@ -1,8 +1,6 @@
-using Godot;
-
 namespace Scalepact.Enemies
 {
-    public partial class EnemyMoveState : EnemyBaseState
+    public partial class EnemySimpleAttackState : EnemyBaseState
     {
         public override void EnterState()
         {
@@ -17,12 +15,6 @@ namespace Scalepact.Enemies
         public override void _PhysicsProcess(double delta)
         {
             base._PhysicsProcess(delta);
-
-            if (stateMachine.IsInAttackRange())
-            {
-                stateMachine.ChangeToAttack();
-                return;
-            }
         }
 
         public override void ExitState()
