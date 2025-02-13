@@ -18,7 +18,7 @@ namespace Scalepact.Enemies
         {
             base._PhysicsProcess(delta);
 
-            if (stateMachine.IsInAttackRange())
+            if (stateMachine.IsPlayerInAttackRange())
             {
                 stateMachine.ChangeToAttack();
                 return;

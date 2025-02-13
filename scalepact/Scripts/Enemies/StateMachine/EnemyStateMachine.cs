@@ -1,6 +1,7 @@
 using Godot;
 using Scalepact.Combat;
 using Scalepact.StateMachines;
+using Scalepact.Utilities;
 
 namespace Scalepact.Enemies
 {
@@ -42,7 +43,7 @@ namespace Scalepact.Enemies
         public void OnHealthComponentTriggerDefeat()
         {
             GD.Print("And thus, I die.");
-            //ChangeState("DeathState");
+            ChangeState("DeathState");
             AnimationTransitionRequest(animDeathTransition, "Death");
             CollisionShape.Disabled = true;
             SetPhysicsProcess(false);
@@ -50,13 +51,13 @@ namespace Scalepact.Enemies
         #endregion
 
         #region Combat Handlers
-        public bool IsInAttackRange()
+        public bool IsPlayerInAttackRange()
         {
             for (int i = 0; i < PlayerDetector.GetCollisionCount(); i++)
             {
                 var col = PlayerDetector.GetCollider(i);
-                GD.Print("Can see: " + col);
-                return true;
+                if (col is PlayerEntityAccessor)
+                    return true;
             }
             return false;
         }
@@ -76,6 +77,13 @@ namespace Scalepact.Enemies
         public bool IsOneShotAnimationActive(string animPath)
         {
             return (bool)AnimationTree.Get(animPath);
+        }
+        #endregion
+
+        #region Animation Events
+        public void TryApplyDamage()
+        {
+            GD.Print("Attack!");
         }
         #endregion
     }
