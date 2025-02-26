@@ -6,12 +6,17 @@ namespace Scalepact.Player
 {
     public partial class PlayerStateMachine : StateMachine
     {
+        [ExportCategory("Movement Speeds")]
         [Export] public float MoveSpeed { get; private set; } = 5f;
+        [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
+        [Export] public float JumpMoveSpeed { get; private set; } = 5.5f;
+
+        [ExportCategory("Jump and Glide Specifics")]
         [Export] public float JumpVelocity { get; private set; } = 4.5f;
+
+        [ExportCategory("Animation Variables")]
         [Export] public float AnimInterpolationDecay { get; private set; } = 20f;
         [Export] public float AnimBlendWeight { get; private set; } = 5f;
-        [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
-
         //Public variables
         public Vector3 AttackDirection { get; private set; } = Vector3.Zero;
 
@@ -40,6 +45,14 @@ namespace Scalepact.Player
         {
             ChangeState(PlayerStringRefs.PlayerAttackState);
             OneShotAnimationRequest(PlayerStringRefs.PlayerMeleeAttackRequest);
+        }
+        public void ChangeToJump()
+        {
+            ChangeState(PlayerStringRefs.PlayerJumpState);
+        }
+        public void ChangeToGroundMovement()
+        {
+            ChangeState(PlayerStringRefs.PlayerMoveState);
         }
         #endregion
 
@@ -71,9 +84,26 @@ namespace Scalepact.Player
 
         public Vector3 ApplyJumpVelocity(Vector3 velocity)
         {
-            //TODO: make this transition into the jump state
-            if (Input.IsActionJustPressed("jump") && PlayerCharBody3D.IsOnFloor())
+            if (PlayerCharBody3D.IsOnFloor())
                 velocity.Y = JumpVelocity;
+            return velocity;
+        }
+
+        public Vector3 ApplyJumpMovement(Vector3 velocity, Vector3 direction, float delta)
+        {
+            if (direction != Vector3.Zero)
+            {
+                velocity.X = direction.X * MoveSpeed;
+                velocity.Z = direction.Z * MoveSpeed;
+
+                LookTowardDirection(direction, delta);
+            }
+            else
+            {
+                velocity.X = Mathf.MoveToward(PlayerCharBody3D.Velocity.X, 0, MoveSpeed);
+                velocity.Z = Mathf.MoveToward(PlayerCharBody3D.Velocity.Z, 0, MoveSpeed);
+            }
+
             return velocity;
         }
 

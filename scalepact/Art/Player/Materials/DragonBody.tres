@@ -8,6 +8,7 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_4fpi8")
 roughness = 0.0
+roughness_texture_channel = 4
 emission_enabled = true
 rim_enabled = true
 rim_texture = ExtResource("1_4fpi8")

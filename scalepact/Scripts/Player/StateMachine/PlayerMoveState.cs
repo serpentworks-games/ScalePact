@@ -23,8 +23,8 @@ namespace Scalepact.Player
 			}
 			if (Input.IsActionPressed("jump"))
 			{
-				//stateMachine.ChangeToJump();
-				//return;
+				stateMachine.ChangeToJump();
+				return;
 			}
 
 			Vector3 velocity = stateMachine.PlayerCharBody3D.Velocity;
