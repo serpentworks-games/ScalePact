@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://cy5lmq1djweto"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyStateMachine.cs" id="1_3u8xu"]
-[ext_resource type="Script" path="res://Scripts/Utilities/EnemyEntityAccessor.cs" id="1_eyhau"]
+[ext_resource type="Script" uid="uid://2ctr74rdos6v" path="res://Scripts/Enemies/StateMachine/EnemyStateMachine.cs" id="1_3u8xu"]
+[ext_resource type="Script" uid="uid://b0k1rr2yuf22n" path="res://Scripts/Utilities/EnemyEntityAccessor.cs" id="1_eyhau"]
 [ext_resource type="AnimationLibrary" uid="uid://beh47qlnu58iu" path="res://Animations/Humanoid/TEMP_EnemyAnimLibrary.res" id="2_bhjmh"]
-[ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyMoveState.cs" id="2_fdovl"]
+[ext_resource type="Script" uid="uid://drk33mvuq0amq" path="res://Scripts/Enemies/StateMachine/EnemyMoveState.cs" id="2_fdovl"]
 [ext_resource type="PackedScene" uid="uid://bbf6ttwtueode" path="res://Art/_Enemies_TEMP/SM_Prop_SwordOrnate_01.fbx" id="2_vq338"]
 [ext_resource type="PackedScene" uid="uid://bvdaqn11tg0jw" path="res://Art/NPCRig.fbx" id="2_w1h0a"]
-[ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyAttackState.cs" id="4_dqpjx"]
-[ext_resource type="Script" path="res://Scripts/Enemies/StateMachine/EnemyDeathState.cs" id="5_l7lc1"]
+[ext_resource type="Script" uid="uid://cbt2jpgnl5vyn" path="res://Scripts/Enemies/StateMachine/EnemyAttackState.cs" id="4_dqpjx"]
+[ext_resource type="Script" uid="uid://cdbdrba7wsge7" path="res://Scripts/Enemies/StateMachine/EnemyDeathState.cs" id="5_l7lc1"]
 [ext_resource type="PackedScene" uid="uid://iifdnv8gbmhw" path="res://GameObjects/HealthComponent.tscn" id="5_r4olu"]
 [ext_resource type="PackedScene" uid="uid://c1w3jx48j7ywr" path="res://GameObjects/MeleeAttackCast.tscn" id="6_4qhwj"]
 
@@ -232,7 +232,7 @@ visible = false
 
 [node name="AnimationPlayer" parent="RigPivot/NPCRig" index="1"]
 libraries = {
-"TEMP_EnemyAnimLibrary": ExtResource("2_bhjmh")
+&"TEMP_EnemyAnimLibrary": ExtResource("2_bhjmh")
 }
 
 [node name="RightHandAttachment" type="BoneAttachment3D" parent="RigPivot"]
@@ -276,7 +276,7 @@ parameters/MoveSpace/blend_position = 0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RigPivot/NPCRig")
 libraries = {
-"TEMP_EnemyAnimLibrary": ExtResource("2_bhjmh")
+&"TEMP_EnemyAnimLibrary": ExtResource("2_bhjmh")
 }
 
 [node name="TargetDetector" type="ShapeCast3D" parent="."]
