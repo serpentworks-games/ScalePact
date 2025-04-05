@@ -13,6 +13,7 @@ namespace Scalepact.Enemies
         public AnimationTree AnimationTree { get; private set; }
         public CollisionShape3D CollisionShape { get; private set; }
         public ShapeCast3D PlayerDetector { get; private set; }
+        public Damager AttackCollider { get; private set; }
 
         string animDeathTransition = "parameters/DeathTransition/transition_request";
         string animAttack1Active = "parameters/AttackTrigger/active";
@@ -24,6 +25,7 @@ namespace Scalepact.Enemies
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
             CollisionShape = GetNode<CollisionShape3D>("../CollisionShape3D");
             PlayerDetector = GetNode<ShapeCast3D>("../TargetDetector");
+            AttackCollider = GetNode<Damager>("%MeleeAttackCollider");
 
             GD.Print("Setting health~ " + MaxHealth);
             HealthComponent.UpdateMaxHealth(MaxHealth);
@@ -84,6 +86,8 @@ namespace Scalepact.Enemies
         public void TryApplyDamage()
         {
             GD.Print("Attack!");
+            AttackCollider.DealDamage();
+            AttackCollider.ClearExceptions();
         }
         #endregion
     }

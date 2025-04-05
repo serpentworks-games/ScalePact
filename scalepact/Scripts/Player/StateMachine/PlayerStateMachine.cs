@@ -6,6 +6,8 @@ namespace Scalepact.Player
 {
     public partial class PlayerStateMachine : StateMachine
     {
+        [Export] public float MaxHealth { get; private set; } = 100f;
+
         [ExportCategory("Movement Speeds")]
         [Export] public float MoveSpeed { get; private set; } = 5f;
         [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
@@ -17,8 +19,10 @@ namespace Scalepact.Player
         [ExportCategory("Animation Variables")]
         [Export] public float AnimInterpolationDecay { get; private set; } = 20f;
         [Export] public float AnimBlendWeight { get; private set; } = 5f;
+
         //Public variables
         public Vector3 AttackDirection { get; private set; } = Vector3.Zero;
+        [Export] public CollisionShape3D Collider { get; private set; }
 
         //Refs
         public CharacterBody3D PlayerCharBody3D { get; private set; }
@@ -26,7 +30,8 @@ namespace Scalepact.Player
         public Node3D RigPivot { get; private set; }
         public Node3D Rig { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
-        public AttackDetection MeleeAttackRayCast { get; private set; }
+        public Damager BiteAttackCollider { get; private set; }
+        public HealthComponent HealthComponent { get; private set; }
 
         public override void _Ready()
         {
@@ -35,7 +40,11 @@ namespace Scalepact.Player
             RigPivot = GetNode<Node3D>("../RigPivot");
             Rig = RigPivot.GetChild<Node3D>(0); //Rig itself
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
-            MeleeAttackRayCast = GetNode<AttackDetection>("%MeleeAttackCast");
+            BiteAttackCollider = GetNode<Damager>("%BiteAttackCollider");
+            HealthComponent = GetNode<HealthComponent>("../HealthComponent");
+
+            GD.Print("Setting Player Health: " + MaxHealth);
+            HealthComponent.UpdateMaxHealth(MaxHealth);
 
             base._Ready();
         }
@@ -141,6 +150,8 @@ namespace Scalepact.Player
             RigPivot.GlobalTransform = RigPivot.GlobalTransform.InterpolateWith(
                 targetTransform, 1.0f - Mathf.Exp(-AnimInterpolationDecay * delta)
             );
+
+            Collider.GlobalRotationDegrees = new Vector3(90f, RigPivot.GlobalRotationDegrees.Y, 0.0f);
         }
         #endregion
 
@@ -170,8 +181,8 @@ namespace Scalepact.Player
         #region Combat Code
         public void ApplyMeleeAttack()
         {
-            MeleeAttackRayCast.DealDamage();
-            MeleeAttackRayCast.ClearExceptions();
+            BiteAttackCollider.DealDamage();
+            BiteAttackCollider.ClearExceptions();
         }
         #endregion
 
