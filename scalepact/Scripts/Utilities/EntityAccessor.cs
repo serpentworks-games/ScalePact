@@ -1,5 +1,5 @@
 using Godot;
-using Scalepact.Combat;
+using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
 
 namespace Scalepact.Utilities

@@ -27,7 +27,6 @@ namespace Scalepact.StateMachines
 
         public virtual void EnterState()
         {
-            GD.Print($"Entered state: {Name}");
             return;
         }
 
@@ -47,7 +46,6 @@ namespace Scalepact.StateMachines
 
         public virtual void ExitState()
         {
-            GD.Print($"Exited state: {Name}");
             return;
         }
     }

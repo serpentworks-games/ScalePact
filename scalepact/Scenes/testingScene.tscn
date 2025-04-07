@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://rpyfcr6vqlwt"]
+[gd_scene load_steps=10 format=3 uid="uid://rpyfcr6vqlwt"]
 
 [ext_resource type="PackedScene" uid="uid://ccfguhc7e2tg1" path="res://GameObjects/Player.tscn" id="1_q8s8h"]
 [ext_resource type="PackedScene" uid="uid://cy5lmq1djweto" path="res://GameObjects/BaseEnemy.tscn" id="2_8bae3"]
+[ext_resource type="PackedScene" uid="uid://dq0gvhexaojdi" path="res://GameObjects/DeathVolume.tscn" id="3_wlgfj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sxrdn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,6 +28,10 @@ albedo_color = Color(0.45, 0.275625, 0.0315, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23j2p"]
 albedo_color = Color(0, 1, 0.0666666, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wlgfj"]
+resource_local_to_scene = true
+size = Vector3(10, 5, 10)
 
 [node name="Node3D" type="Node3D"]
 
@@ -76,7 +81,7 @@ use_collision = true
 material = SubResource("StandardMaterial3D_23j2p")
 
 [node name="Player" parent="." instance=ExtResource("1_q8s8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -92,38 +97,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9305, 1.15, 14.0983)
 [node name="Enemy4" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9305, 1.15, 6.2938)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 1.01581, 0.0406982, -14.2384)
 use_collision = true
 collision_layer = 13
 size = Vector3(2.75671, 0.905762, 3)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0, 1, 3.99927, 0.372286, -14.2384)
 use_collision = true
 collision_layer = 13
 size = Vector3(3.53021, 0.905762, 3)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0, 1, 11.1632, 0.734774, -14.2384)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0, 1, 10.9253, 0.734774, -14.2384)
 use_collision = true
 collision_layer = 13
-size = Vector3(8, 1.63074, 3)
+size = Vector3(7.52429, 1.63074, 3)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, -1.3027e-15, -1, -2.98023e-08, 1, 0, 1, 2.98023e-08, -4.37114e-08, 12.7135, 0.734774, -12.5052)
 use_collision = true
 collision_layer = 13
 size = Vector3(1, 1.63074, 4)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, -1.3027e-15, -1, -2.98023e-08, 1, 0, 1, 2.98023e-08, -4.37114e-08, 12.7135, 2.63412, -4.04154)
 use_collision = true
 collision_layer = 13
 size = Vector3(7.8543, 1.63074, 4)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, -1.06471e-15, -1, 0.424452, 0.90545, -1.85534e-08, 0.90545, -0.424452, -3.95785e-08, 12.7135, 1.76687, -9.64943)
 use_collision = true
 collision_layer = 13
 size = Vector3(4.46465, 1.63074, 4)
+
+[node name="DeathVolume" parent="." instance=ExtResource("3_wlgfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7564, 2.59898, -5.08708)
+isInstaKill = true
+
+[node name="CollisionShape3D" parent="DeathVolume" index="0"]
+shape = SubResource("BoxShape3D_wlgfj")
+
+[editable path="DeathVolume"]

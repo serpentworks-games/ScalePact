@@ -1,13 +1,11 @@
 using Godot;
-using Scalepact.Combat;
+using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
 
 namespace Scalepact.Player
 {
     public partial class PlayerStateMachine : StateMachine
     {
-        [Export] public float MaxHealth { get; private set; } = 100f;
-
         [ExportCategory("Movement Speeds")]
         [Export] public float MoveSpeed { get; private set; } = 5f;
         [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
@@ -43,8 +41,7 @@ namespace Scalepact.Player
             BiteAttackCollider = GetNode<Damager>("%BiteAttackCollider");
             HealthComponent = GetNode<HealthComponent>("../HealthComponent");
 
-            GD.Print("Setting Player Health: " + MaxHealth);
-            HealthComponent.UpdateMaxHealth(MaxHealth);
+            HealthComponent.OnDeathTriggered += OnDeathTriggered;
 
             base._Ready();
         }
@@ -62,6 +59,13 @@ namespace Scalepact.Player
         public void ChangeToGroundMovement()
         {
             ChangeState(PlayerStringRefs.PlayerMoveState);
+        }
+        public void OnDeathTriggered()
+        {
+            GD.Print("Triggering death!");
+            ChangeState(PlayerStringRefs.PlayerDeathState);
+            AnimationTransitionRequest(PlayerStringRefs.PlayerDeathRequest, "Dead");
+            SetPhysicsProcess(false);
         }
         #endregion
 
@@ -159,6 +163,11 @@ namespace Scalepact.Player
         public void OneShotAnimationRequest(string animName)
         {
             AnimationTree.Set(animName, (int)AnimationNodeOneShot.OneShotRequest.Fire);
+        }
+
+        public void AnimationTransitionRequest(string propertyPath, string state)
+        {
+            AnimationTree.Set(propertyPath, state);
         }
 
         public bool IsAttackActive()

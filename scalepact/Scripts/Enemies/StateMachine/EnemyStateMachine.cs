@@ -1,5 +1,5 @@
 using Godot;
-using Scalepact.Combat;
+using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
 using Scalepact.Utilities;
 
@@ -7,8 +7,6 @@ namespace Scalepact.Enemies
 {
     public partial class EnemyStateMachine : StateMachine
     {
-        [Export] public float MaxHealth { get; private set; } = 5f;
-
         public HealthComponent HealthComponent { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
         public CollisionShape3D CollisionShape { get; private set; }
@@ -27,10 +25,7 @@ namespace Scalepact.Enemies
             PlayerDetector = GetNode<ShapeCast3D>("../TargetDetector");
             AttackCollider = GetNode<Damager>("%MeleeAttackCollider");
 
-            GD.Print("Setting health~ " + MaxHealth);
-            HealthComponent.UpdateMaxHealth(MaxHealth);
-
-            HealthComponent.TriggerDefeat += OnHealthComponentTriggerDefeat;
+            HealthComponent.OnDeathTriggered += OnDeathTriggered;
 
             base._Ready();
         }
@@ -42,7 +37,7 @@ namespace Scalepact.Enemies
             OneShotAnimationRequest(animAttack1Trigger);
         }
 
-        public void OnHealthComponentTriggerDefeat()
+        public void OnDeathTriggered()
         {
             GD.Print("And thus, I die.");
             ChangeState("DeathState");
