@@ -9,6 +9,7 @@ namespace Scalepact.Player
 		public static string PlayerAttackState { get => "AttackState"; }
 		public static string PlayerJumpState { get => "JumpState"; }
 		public static string PlayerDeathState { get => "DeathState"; }
+		public static string PlayerDashState { get => "DashState"; }
 
 		//Animations
 		public static string PlayerAnimPlayback { get => "parameters/playback"; }

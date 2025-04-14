@@ -21,6 +21,8 @@ namespace Scalepact.DamageSystem
                 {
                     if (col is EntityAccessor entity)
                     {
+                        if (entity == null) continue;
+
                         if (isInstaKill)
                         {
                             entity.HealthComponent.InstaKill();

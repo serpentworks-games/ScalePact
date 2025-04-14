@@ -22,7 +22,7 @@ namespace Scalepact.Enemies
             HealthComponent = GetNode<HealthComponent>("../HealthComponent");
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
             CollisionShape = GetNode<CollisionShape3D>("../CollisionShape3D");
-            PlayerDetector = GetNode<ShapeCast3D>("../TargetDetector");
+            PlayerDetector = GetNode<ShapeCast3D>("../RigPivot/TargetDetector");
             AttackCollider = GetNode<Damager>("%MeleeAttackCollider");
 
             HealthComponent.OnDeathTriggered += OnDeathTriggered;

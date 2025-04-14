@@ -25,17 +25,12 @@ namespace Scalepact.Player
                 return;
             }
 
-            Vector3 velocity = stateMachine.PlayerCharBody3D.Velocity;
+            GetVelocityAndDirection();
 
-            Vector3 direction = stateMachine.GetMovementDirection();
+            velocity = stateMachine.ApplyAttackMovement(
+                velocity, direction, stateMachine.MeleeAttackMoveSpeed, (float)delta);
 
-            velocity = stateMachine.ApplyAttackMovement(velocity, direction, (float)delta);
-
-            velocity = stateMachine.ApplyGravity((float)delta, velocity);
-
-            stateMachine.PlayerCharBody3D.Velocity = velocity;
-
-            stateMachine.PlayerCharBody3D.MoveAndSlide();
+            GroundedCharacterMovement(delta, velocity);
 
         }
 

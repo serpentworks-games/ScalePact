@@ -16,30 +16,20 @@ namespace Scalepact.Player
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (Input.IsActionPressed("attack"))
-			{
-				stateMachine.ChangeToAttack();
-				return;
-			}
 			if (Input.IsActionPressed("jump"))
 			{
 				stateMachine.ChangeToJump();
 				return;
 			}
 
-			Vector3 velocity = stateMachine.PlayerCharBody3D.Velocity;
+			GetVelocityAndDirection();
 
-			Vector3 direction = stateMachine.GetMovementDirection();
+			velocity = stateMachine.ResolveMovementPhysics(
+				direction, velocity, stateMachine.MoveSpeed, (float)delta);
 
-			velocity = stateMachine.ApplyGroundMovementVelocity(direction, velocity, (float)delta);
-
-			velocity = stateMachine.ApplyGravity((float)delta, velocity);
-
-			stateMachine.PlayerCharBody3D.Velocity = velocity;
+			GroundedCharacterMovement(delta, velocity);
 
 			stateMachine.UpdateMovementAnimTree(velocity.Length(), (float)delta);
-
-			stateMachine.PlayerCharBody3D.MoveAndSlide();
 		}
 
 		public override void ExitState()

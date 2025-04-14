@@ -1,6 +1,7 @@
 using Godot;
 using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
+using Scalepact.Utilities;
 
 namespace Scalepact.Player
 {
@@ -10,6 +11,7 @@ namespace Scalepact.Player
         [Export] public float MoveSpeed { get; private set; } = 5f;
         [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
         [Export] public float JumpMoveSpeed { get; private set; } = 5.5f;
+        [Export] public float PhysicsFrameDecay { get; private set; } = 8.8f;
 
         [ExportCategory("Jump and Glide Specifics")]
         [Export] public float JumpVelocity { get; private set; } = 4.5f;
@@ -60,6 +62,10 @@ namespace Scalepact.Player
         {
             ChangeState(PlayerStringRefs.PlayerMoveState);
         }
+        public void ChangeToDash()
+        {
+            ChangeState(PlayerStringRefs.PlayerDashState);
+        }
         public void OnDeathTriggered()
         {
             GD.Print("Triggering death!");
@@ -70,21 +76,29 @@ namespace Scalepact.Player
         #endregion
 
         #region Movement Code
-        public Vector3 ApplyGroundMovementVelocity(Vector3 direction, Vector3 velocity, float delta)
+        public Vector3 ResolveMovementPhysics(Vector3 direction, Vector3 velocity, float speedValue, float delta)
         {
+            velocity = ApplyVelocityEasing(velocity, direction, MoveSpeed, delta);
+
             if (direction != Vector3.Zero)
             {
-                velocity.X = direction.X * MoveSpeed;
-                velocity.Z = direction.Z * MoveSpeed;
-
                 LookTowardDirection(direction, delta);
             }
-            else
-            {
-                velocity.X = Mathf.MoveToward(PlayerCharBody3D.Velocity.X, 0, MoveSpeed);
-                velocity.Z = Mathf.MoveToward(PlayerCharBody3D.Velocity.Z, 0, MoveSpeed);
-            }
+            return velocity;
+        }
 
+        public Vector3 ApplyVelocityEasing(Vector3 velocity, Vector3 direction, float speedValue, float delta)
+        {
+            velocity.X = UtilityFunctions.ExpDecay(
+                velocity.X,
+                direction.X * speedValue,
+                PhysicsFrameDecay, delta
+            );
+            velocity.Z = UtilityFunctions.ExpDecay(
+                velocity.Z,
+                direction.Z * speedValue,
+                PhysicsFrameDecay, delta
+            );
             return velocity;
         }
 
@@ -102,34 +116,15 @@ namespace Scalepact.Player
             return velocity;
         }
 
-        public Vector3 ApplyJumpMovement(Vector3 velocity, Vector3 direction, float delta)
+        public Vector3 ApplyAttackMovement(Vector3 velocity, Vector3 direction, float speedValue, float delta)
         {
-            if (direction != Vector3.Zero)
-            {
-                velocity.X = direction.X * MoveSpeed;
-                velocity.Z = direction.Z * MoveSpeed;
+            velocity = ApplyVelocityEasing(velocity, direction, speedValue, delta);
 
-                LookTowardDirection(direction, delta);
-            }
-            else
-            {
-                velocity.X = Mathf.MoveToward(PlayerCharBody3D.Velocity.X, 0, MoveSpeed);
-                velocity.Z = Mathf.MoveToward(PlayerCharBody3D.Velocity.Z, 0, MoveSpeed);
-            }
-
-            return velocity;
-        }
-
-        public Vector3 ApplyAttackMovement(Vector3 velocity, Vector3 direction, float delta)
-        {
             AttackDirection = direction;
             if (AttackDirection.IsZeroApprox())
             {
                 AttackDirection = Rig.GlobalBasis * new Vector3(0, 0, 1);
             }
-
-            velocity.X = AttackDirection.X * MeleeAttackMoveSpeed;
-            velocity.Z = AttackDirection.Z * MeleeAttackMoveSpeed;
 
             LookTowardDirection(AttackDirection, delta);
 

@@ -16,33 +16,25 @@ namespace Scalepact.Player
 
         public override void _PhysicsProcess(double delta)
         {
-
-            Vector3 velocity = stateMachine.PlayerCharBody3D.Velocity;
-
-            Vector3 direction = stateMachine.GetMovementDirection();
-
-            velocity = stateMachine.ApplyGravity((float)delta, velocity);
-
-            velocity = stateMachine.ApplyJumpVelocity(velocity);
-
-            velocity = stateMachine.ApplyJumpMovement(velocity, direction, (float)delta);
-
-            stateMachine.PlayerCharBody3D.Velocity = velocity;
-
-            stateMachine.PlayerCharBody3D.MoveAndSlide();
-
-            // if (!stateMachine.PlayerCharBody3D.IsOnFloor() && Input.IsActionPressed("jump"))
-            // {
-            //     //switch to gliding
-            //     //return;
-            //     GD.Print("Activing gliding!");
-            // }
+            if (!stateMachine.PlayerCharBody3D.IsOnFloor() && Input.IsActionPressed("jump"))
+            {
+                //switch to gliding
+                //return;
+                GD.Print("Activing gliding!");
+            }
 
             if (stateMachine.PlayerCharBody3D.IsOnFloor())
             {
                 stateMachine.ChangeToGroundMovement();
                 return;
             }
+
+            GetVelocityAndDirection();
+
+            velocity = stateMachine.ResolveMovementPhysics(
+                velocity, direction, stateMachine.JumpMoveSpeed, (float)delta);
+
+            AerialCharacterMovement(delta, velocity);
         }
 
         public override void ExitState()
