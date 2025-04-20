@@ -5,6 +5,7 @@ namespace Scalepact.Enemies
         public override void EnterState()
         {
             base.EnterState();
+
         }
 
         public override void _Process(double delta)
@@ -15,9 +16,16 @@ namespace Scalepact.Enemies
         public override void _PhysicsProcess(double delta)
         {
             base._PhysicsProcess(delta);
+
             if (!stateMachine.IsOneShotAnimationActive("parameters/AttackTrigger/active"))
             {
-                stateMachine.ChangeState("MoveState");
+                if (!stateMachine.IsInRange(stateMachine.AttackRange))
+                {
+                    stateMachine.ChangeToChaseState();
+                    return;
+                }
+
+                stateMachine.ChangeToIdleState();
                 return;
             }
         }

@@ -19,7 +19,7 @@ namespace Scalepact.Player
         {
             base._PhysicsProcess(delta);
 
-            if (!stateMachine.IsAttackActive())
+            if (!stateMachine.IsOneShotAnimationActive(PlayerStringRefs.PlayerMeleeAttackIsActive))
             {
                 stateMachine.ChangeState(PlayerStringRefs.PlayerMoveState);
                 return;
@@ -28,9 +28,9 @@ namespace Scalepact.Player
             GetVelocityAndDirection();
 
             velocity = stateMachine.ApplyAttackMovement(
-                velocity, direction, stateMachine.MeleeAttackMoveSpeed, (float)delta);
+                direction, velocity, stateMachine.MeleeAttackMoveSpeed, (float)delta);
 
-            GroundedCharacterMovement(delta, velocity);
+            GroundedCharacterMovement(velocity, delta);
 
         }
 

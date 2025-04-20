@@ -10,11 +10,12 @@ namespace Scalepact.Player
         [ExportCategory("Movement Speeds")]
         [Export] public float MoveSpeed { get; private set; } = 5f;
         [Export] public float MeleeAttackMoveSpeed { get; private set; } = 2f;
-        [Export] public float JumpMoveSpeed { get; private set; } = 5.5f;
-        [Export] public float PhysicsFrameDecay { get; private set; } = 8.8f;
+        [Export] public float PhysicsFrameDecay { get; private set; } = 8.0f;
 
         [ExportCategory("Jump and Glide Specifics")]
+        [Export] public float JumpMoveSpeed { get; private set; } = 5.5f;
         [Export] public float JumpVelocity { get; private set; } = 4.5f;
+        [Export] public float JumpFalloff { get; private set; } = 2f;
 
         [ExportCategory("Animation Variables")]
         [Export] public float AnimInterpolationDecay { get; private set; } = 20f;
@@ -78,7 +79,7 @@ namespace Scalepact.Player
         #region Movement Code
         public Vector3 ResolveMovementPhysics(Vector3 direction, Vector3 velocity, float speedValue, float delta)
         {
-            velocity = ApplyVelocityEasing(velocity, direction, MoveSpeed, delta);
+            velocity = ApplyVelocityEasing(direction, velocity, speedValue, delta);
 
             if (direction != Vector3.Zero)
             {
@@ -87,7 +88,7 @@ namespace Scalepact.Player
             return velocity;
         }
 
-        public Vector3 ApplyVelocityEasing(Vector3 velocity, Vector3 direction, float speedValue, float delta)
+        public Vector3 ApplyVelocityEasing(Vector3 direction, Vector3 velocity, float speedValue, float delta)
         {
             velocity.X = UtilityFunctions.ExpDecay(
                 velocity.X,
@@ -105,7 +106,7 @@ namespace Scalepact.Player
         public Vector3 ApplyGravity(float delta, Vector3 velocity)
         {
             if (!PlayerCharBody3D.IsOnFloor())
-                velocity += PlayerCharBody3D.GetGravity() * delta;
+                velocity += (JumpFalloff - 1) * PlayerCharBody3D.GetGravity() * delta;
             return velocity;
         }
 
@@ -116,9 +117,9 @@ namespace Scalepact.Player
             return velocity;
         }
 
-        public Vector3 ApplyAttackMovement(Vector3 velocity, Vector3 direction, float speedValue, float delta)
+        public Vector3 ApplyAttackMovement(Vector3 direction, Vector3 velocity, float speedValue, float delta)
         {
-            velocity = ApplyVelocityEasing(velocity, direction, speedValue, delta);
+            velocity = ApplyVelocityEasing(direction, velocity, speedValue, delta);
 
             AttackDirection = direction;
             if (AttackDirection.IsZeroApprox())
@@ -155,31 +156,7 @@ namespace Scalepact.Player
         #endregion
 
         #region Animation Functions
-        public void OneShotAnimationRequest(string animName)
-        {
-            AnimationTree.Set(animName, (int)AnimationNodeOneShot.OneShotRequest.Fire);
-        }
 
-        public void AnimationTransitionRequest(string propertyPath, string state)
-        {
-            AnimationTree.Set(propertyPath, state);
-        }
-
-        public bool IsAttackActive()
-        {
-            return (bool)AnimationTree.Get("parameters/MeleeAttack/active");
-        }
-
-        public void UpdateMovementAnimTree(float velocity, float delta)
-        {
-            AnimationTree.Set(
-                PlayerStringRefs.PlayerMoveBlendValue,
-                Mathf.MoveToward(
-                    (float)AnimationTree.Get(PlayerStringRefs.PlayerMoveBlendValue),
-                    Mathf.Clamp(velocity, 0, 1),
-                    delta * AnimBlendWeight
-                ));
-        }
         #endregion
 
         #region Combat Code

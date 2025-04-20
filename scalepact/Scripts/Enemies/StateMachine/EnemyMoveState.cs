@@ -18,11 +18,6 @@ namespace Scalepact.Enemies
         {
             base._PhysicsProcess(delta);
 
-            if (stateMachine.IsPlayerInAttackRange())
-            {
-                stateMachine.ChangeToAttack();
-                return;
-            }
         }
 
         public override void ExitState()

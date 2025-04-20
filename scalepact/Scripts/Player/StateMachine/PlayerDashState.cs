@@ -29,10 +29,9 @@ namespace Scalepact.Player
             GetVelocityAndDirection();
 
             velocity = stateMachine.ResolveMovementPhysics(
-                velocity, dashAbility.MoveDir,
-                stateMachine.MoveSpeed + dashAbility.DashSpeedBoost, (float)delta);
+               direction, velocity, stateMachine.MoveSpeed * dashAbility.DashSpeedBoost, (float)delta);
 
-            GroundedCharacterMovement(delta, velocity);
+            GroundedCharacterMovement(velocity, delta);
         }
 
         public override void ExitState()

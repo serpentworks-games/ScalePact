@@ -27,7 +27,7 @@ namespace Scalepact.Player
             direction = stateMachine.GetMovementDirection();
         }
 
-        public void GroundedCharacterMovement(double delta, Vector3 velocity)
+        public void GroundedCharacterMovement(Vector3 velocity, double delta)
         {
             velocity = stateMachine.ApplyGravity((float)delta, velocity);
 
@@ -37,10 +37,8 @@ namespace Scalepact.Player
         }
 
         //Separated out to allow for aerial movement
-        public void AerialCharacterMovement(double delta, Vector3 velocity)
+        public void AerialCharacterMovement(Vector3 velocity, double delta)
         {
-            velocity = stateMachine.ApplyJumpVelocity(velocity);
-
             velocity = stateMachine.ApplyGravity((float)delta, velocity);
 
             stateMachine.PlayerCharBody3D.Velocity = velocity;

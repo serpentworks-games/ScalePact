@@ -27,9 +27,14 @@ namespace Scalepact.Player
 			velocity = stateMachine.ResolveMovementPhysics(
 				direction, velocity, stateMachine.MoveSpeed, (float)delta);
 
-			GroundedCharacterMovement(delta, velocity);
+			GroundedCharacterMovement(velocity, delta);
 
-			stateMachine.UpdateMovementAnimTree(velocity.Length(), (float)delta);
+			stateMachine.UpdateMovementBlendValue(
+				PlayerStringRefs.PlayerMoveBlendValue,
+				(float)velocity.Length(),
+				stateMachine.AnimBlendWeight,
+				(float)delta
+			);
 		}
 
 		public override void ExitState()
