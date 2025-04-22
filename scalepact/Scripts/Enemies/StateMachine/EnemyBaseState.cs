@@ -17,5 +17,21 @@ namespace Scalepact.Enemies
 
             SetProcessesOnState(false);
         }
+
+        public void MoveNavigationAgent(Vector3 targetPos, float moveSpeed)
+        {
+            stateMachine.OrientRig(stateMachine.Agent3D.GetNextPathPosition());
+
+            Vector3 targetVelocity = Vector3.Zero;
+            stateMachine.Agent3D.TargetPosition = targetPos;
+
+            if (!stateMachine.Agent3D.IsTargetReached())
+            {
+                targetVelocity = stateMachine.GetLocalNavigationDirection() * moveSpeed;
+                stateMachine.OrientRig(stateMachine.Agent3D.GetNextPathPosition());
+            }
+
+            stateMachine.Agent3D.Velocity = targetVelocity;
+        }
     }
 }

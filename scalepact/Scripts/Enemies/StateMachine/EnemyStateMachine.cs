@@ -1,5 +1,7 @@
+using System.ComponentModel;
 using Godot;
 using Scalepact.DamageSystem;
+using Scalepact.Gameplay;
 using Scalepact.StateMachines;
 using Scalepact.Utilities;
 
@@ -7,9 +9,19 @@ namespace Scalepact.Enemies
 {
     public partial class EnemyStateMachine : StateMachine
     {
+        //Exported Variables
         [Export] public float BaseMoveSpeed { get; private set; } = 2.5f;
         [Export] public float ChaseMoveSpeed { get; private set; } = 3f;
 
+        [Export] public PatrolPath PatrolPath { get; private set; }
+        [Export] public WanderArea WanderArea { get; private set; }
+        [Export] public float PointDwellTime { get; private set; } = 1f;
+
+        //Public Variables
+        public Node3D Player { get; private set; }
+        public Vector3 OriginalPosition { get; private set; }
+
+        //Node Refs
         public HealthComponent HealthComponent { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
         public CollisionShape3D CollisionShape { get; private set; }
@@ -20,11 +32,14 @@ namespace Scalepact.Enemies
         public CharacterBody3D Body3D { get; private set; }
         public Node3D Rig { get; private set; }
 
-        public Node3D Player { get; private set; }
+        //Private Variables
+        int currentWaypointIndex;
 
+        //Animation private variables
         private const int kMoveThreshold = 1;
         float blendTarget;
 
+        //Animator Strings
         string animDeathTransition = "parameters/DeathTransition/transition_request";
         string animAttack1Active = "parameters/AttackTrigger/active";
         string animAttack1Trigger = "parameters/AttackTrigger/request";
@@ -46,6 +61,8 @@ namespace Scalepact.Enemies
 
             HealthComponent.OnDeathTriggered += OnDeathTriggered;
             Agent3D.VelocityComputed += OnNavAgentVelocityComputed;
+
+            OriginalPosition = Body3D.GlobalPosition;
 
             base._Ready();
         }
@@ -80,6 +97,14 @@ namespace Scalepact.Enemies
         {
             ChangeState("ChaseState");
         }
+        public void ChangeToPatrolState()
+        {
+            ChangeState("PatrolState");
+        }
+        public void ChangeToWanderState()
+        {
+            ChangeState("WanderState");
+        }
 
         public void OnDeathTriggered()
         {
@@ -111,7 +136,6 @@ namespace Scalepact.Enemies
 
         public void OnNavAgentVelocityComputed(Vector3 safeVelocity)
         {
-            GD.Print("SafeVelocity is: " + safeVelocity.Length());
             if (safeVelocity.Length() > kMoveThreshold)
                 blendTarget = 1;
             else
@@ -120,9 +144,50 @@ namespace Scalepact.Enemies
             Body3D.Velocity = safeVelocity;
             Body3D.MoveAndSlide();
         }
+
         public void StopAgent()
         {
             Agent3D.Velocity = Vector3.Zero;
+        }
+        #endregion
+
+        #region Patrol and Wander Handlers
+        //Shared
+        public bool IsAtTargetPoint(Vector3 targetPoint)
+        {
+            Vector3 adjustedGlobal = Vector3.Zero;
+            if (PatrolPath != null)
+            {
+                adjustedGlobal = new Vector3(Body3D.GlobalPosition.X, PatrolPath.GlobalPosition.Y, Body3D.GlobalPosition.Z);
+            }
+            else if (WanderArea != null)
+            {
+                adjustedGlobal = new Vector3(Body3D.GlobalPosition.X, WanderArea.GlobalPosition.Y, Body3D.GlobalPosition.Z);
+            }
+
+            return UtilityFunctions.Vector3Distance(adjustedGlobal, targetPoint) < Agent3D.TargetDesiredDistance;
+        }
+
+        //Patrol Paths
+        public Vector3 GetCurrentWaypoint()
+        {
+            return PatrolPath.GetWaypoint(currentWaypointIndex);
+        }
+
+        public void GetNextWaypoint()
+        {
+            currentWaypointIndex = PatrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        //Wander Areas
+        public Vector3 GetCurrentLocationInArea()
+        {
+            return WanderArea.GeneratedPoint;
+        }
+
+        public void GetNewPointInArea()
+        {
+            WanderArea.GenerateRandomPoint();
         }
         #endregion
 

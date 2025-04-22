@@ -10,6 +10,17 @@ namespace Scalepact.Enemies
         public override void _Process(double delta)
         {
             base._Process(delta);
+            if (stateMachine.WanderArea != null)
+            {
+                stateMachine.ChangeToWanderState();
+                return;
+            }
+            if (stateMachine.PatrolPath != null)
+            {
+                stateMachine.ChangeToPatrolState();
+                return;
+            }
+
             if (stateMachine.IsInRange(stateMachine.ChaseRange))
             {
                 stateMachine.ChangeToChaseState();

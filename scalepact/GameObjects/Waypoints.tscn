@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://biu2mf8jdcjiw"]
+
+[ext_resource type="Script" uid="uid://cursihvwnk48l" path="res://Scripts/Gameplay/PatrolPath.cs" id="1_5m05e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_80lkt"]
+radius = 0.25
+height = 0.5
+
+[node name="Waypoints" type="Node3D"]
+script = ExtResource("1_5m05e")
+
+[node name="Waypoint" type="MeshInstance3D" parent="."]
+layers = 2
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("SphereMesh_80lkt")

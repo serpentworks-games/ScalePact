@@ -8,5 +8,11 @@ namespace Scalepact.Utilities
         {
             return b + (a - b) * Mathf.Exp(-decay * delta);
         }
+
+        public static float Vector3Distance(Vector3 a, Vector3 b)
+        {
+            var vector = a - b;
+            return vector.Length();
+        }
     }
 }

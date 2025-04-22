@@ -28,19 +28,10 @@ namespace Scalepact.Enemies
                 return;
             }
 
-            stateMachine.OrientRig(stateMachine.Agent3D.GetNextPathPosition());
-
-            Vector3 targetVelocity = Vector3.Zero;
-            stateMachine.Agent3D.TargetPosition = stateMachine.Player.GlobalPosition;
-
-            if (!stateMachine.Agent3D.IsTargetReached())
-            {
-                targetVelocity = stateMachine.GetLocalNavigationDirection() * stateMachine.ChaseMoveSpeed;
-                stateMachine.OrientRig(stateMachine.Agent3D.GetNextPathPosition());
-            }
-
-            stateMachine.Agent3D.Velocity = targetVelocity;
+            MoveNavigationAgent(stateMachine.Player.GlobalPosition, stateMachine.ChaseMoveSpeed);
         }
+
+
 
         public override void ExitState()
         {

@@ -82,8 +82,10 @@ interact={
 
 [layer_names]
 
+3d_render/layer_2="NotVisibleInGame"
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Interactable"
 3d_physics/layer_3="Player"
 3d_physics/layer_4="AttackableEntity"
+3d_physics/layer_5="WanderingEntity"
 avoidance/layer_1="Agent"
