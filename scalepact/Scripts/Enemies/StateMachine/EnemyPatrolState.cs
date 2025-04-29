@@ -37,6 +37,7 @@ namespace Scalepact.Enemies
             }
 
             nextPos = stateMachine.GetCurrentWaypoint();
+            stateMachine.LastWaypointPos = nextPos;
 
             if (timeSinceArrivedatWaypoint > stateMachine.PointDwellTime)
             {

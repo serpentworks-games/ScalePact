@@ -19,7 +19,7 @@ namespace Scalepact.Enemies
             base._PhysicsProcess(delta);
             if (!stateMachine.IsInRange(stateMachine.ChaseRange))
             {
-                stateMachine.ChangeToIdleState();
+                stateMachine.ChangeToSuspicionState();
                 return;
             }
             if (stateMachine.IsInRange(stateMachine.AttackRange))

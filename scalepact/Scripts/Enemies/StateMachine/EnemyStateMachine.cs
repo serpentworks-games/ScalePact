@@ -16,10 +16,12 @@ namespace Scalepact.Enemies
         [Export] public PatrolPath PatrolPath { get; private set; }
         [Export] public WanderArea WanderArea { get; private set; }
         [Export] public float PointDwellTime { get; private set; } = 1f;
+        [Export] public float SuspicionTime { get; private set; } = 3f;
 
         //Public Variables
         public Node3D Player { get; private set; }
         public Vector3 OriginalPosition { get; private set; }
+        public Vector3 LastWaypointPos { get; set; }
 
         //Node Refs
         public HealthComponent HealthComponent { get; private set; }
@@ -59,7 +61,7 @@ namespace Scalepact.Enemies
             Body3D = GetParent<CharacterBody3D>();
             Rig = GetNode<Node3D>("../RigPivot");
 
-            HealthComponent.OnDeathTriggered += OnDeathTriggered;
+            HealthComponent.OnDeathTriggered += ChangeToDeathState;
             Agent3D.VelocityComputed += OnNavAgentVelocityComputed;
 
             OriginalPosition = Body3D.GlobalPosition;
@@ -105,8 +107,12 @@ namespace Scalepact.Enemies
         {
             ChangeState("WanderState");
         }
+        public void ChangeToSuspicionState()
+        {
+            ChangeState("SuspicionState");
+        }
 
-        public void OnDeathTriggered()
+        public void ChangeToDeathState()
         {
             GD.Print("And thus, I die.");
             ChangeState("DeathState");
@@ -164,8 +170,20 @@ namespace Scalepact.Enemies
             {
                 adjustedGlobal = new Vector3(Body3D.GlobalPosition.X, WanderArea.GlobalPosition.Y, Body3D.GlobalPosition.Z);
             }
+            else
+            {
+                adjustedGlobal = Body3D.GlobalPosition;
+            }
 
             return UtilityFunctions.Vector3Distance(adjustedGlobal, targetPoint) < Agent3D.TargetDesiredDistance;
+        }
+
+        public Vector3 GetGuardOrLastWaypointPosition()
+        {
+            if (PatrolPath == null && WanderArea == null)
+                return OriginalPosition;
+            else
+                return LastWaypointPos;
         }
 
         //Patrol Paths
