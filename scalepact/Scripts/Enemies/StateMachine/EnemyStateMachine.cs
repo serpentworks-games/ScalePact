@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using Godot;
 using Scalepact.DamageSystem;
 using Scalepact.Gameplay;
@@ -17,6 +16,8 @@ namespace Scalepact.Enemies
         [Export] public WanderArea WanderArea { get; private set; }
         [Export] public float PointDwellTime { get; private set; } = 1f;
         [Export] public float SuspicionTime { get; private set; } = 3f;
+
+        [Signal] public delegate void OnAttackTriggeredEventHandler();
 
         //Public Variables
         public Node3D Player { get; private set; }
@@ -94,6 +95,7 @@ namespace Scalepact.Enemies
         {
             ChangeState("AttackState");
             OneShotAnimationRequest(animAttack1Trigger);
+            EmitSignal(SignalName.OnAttackTriggered);
         }
         public void ChangeToChaseState()
         {

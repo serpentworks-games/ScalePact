@@ -1,21 +1,26 @@
 using Godot;
+using Scalepact.Player;
 
-namespace Scalepact.Abilities
+namespace Scalepact.Abilities.PlayerAbilities
 {
     public partial class BiteAttackAbility : AbilityBase
     {
         public override void StartAbility()
         {
-            CharacterBody3D charBody3D = player.PlayerCharBody3D;
-
-            if (charBody3D != null)
+            if (stateMachine is PlayerStateMachine)
             {
-                if (charBody3D.IsOnFloor())
-                {
-                    player.ChangeToAttack();
+                PlayerStateMachine player = (PlayerStateMachine)stateMachine;
+                CharacterBody3D charBody3D = player.PlayerCharBody3D;
 
-                    abilityTimer.Start(cooldownTimer);
-                    abilityTimeRemaining = abilityDuration;
+                if (charBody3D != null)
+                {
+                    if (charBody3D.IsOnFloor())
+                    {
+                        player.ChangeToAttack();
+
+                        abilityTimer.Start(cooldownTimer);
+                        abilityTimeRemaining = abilityDuration;
+                    }
                 }
             }
             base.StartAbility();

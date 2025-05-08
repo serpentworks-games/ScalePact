@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Scalepact.Player
 {
     public partial class PlayerAttackState : PlayerBaseState

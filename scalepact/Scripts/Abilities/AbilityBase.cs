@@ -1,12 +1,11 @@
 using Godot;
-using Scalepact.Player;
-using Scalepact.Utilities;
-using System;
+using Scalepact.StateMachines;
 
 namespace Scalepact.Abilities
 {
     public enum AbilityName
     {
+        NONE,
         ability_melee_attack,
         ability_range_attack,
         ability_dash
@@ -17,7 +16,7 @@ namespace Scalepact.Abilities
         [Export] AbilityName abilityName;
         [Export] protected float abilityDuration;
         [Export] protected float cooldownTimer;
-        [Export] protected PlayerStateMachine player;
+        [Export] protected StateMachine stateMachine;
 
         public bool IsInAbility { get; private set; }
 
@@ -35,9 +34,16 @@ namespace Scalepact.Abilities
         public virtual void ProcessAbility() { }
         public virtual void ResolveAbility() { }
 
+        public void SetIsInAbility(bool newState)
+        {
+            IsInAbility = newState;
+        }
+
         public override void _UnhandledInput(InputEvent @event)
         {
             if (!abilityTimer.IsStopped()) return;
+
+            if (abilityName == AbilityName.NONE) return;
 
             if (@event.IsActionPressed(abilityName.ToString()))
             {

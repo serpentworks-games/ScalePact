@@ -1,7 +1,7 @@
 using Godot;
 using Scalepact.Player;
 
-namespace Scalepact.Abilities
+namespace Scalepact.Abilities.PlayerAbilities
 {
     public partial class DashAbility : AbilityBase
     {
@@ -11,17 +11,21 @@ namespace Scalepact.Abilities
 
         public override void StartAbility()
         {
-            MoveDir = player.GetMovementDirection();
-
-            if (!MoveDir.IsZeroApprox())
+            if (stateMachine is PlayerStateMachine)
             {
-                player.ChangeToDash();
+                PlayerStateMachine player = (PlayerStateMachine)stateMachine;
+                MoveDir = player.GetMovementDirection();
 
-                abilityTimer.Start(cooldownTimer);
-                abilityTimeRemaining = abilityDuration;
+                if (!MoveDir.IsZeroApprox())
+                {
+                    player.ChangeToDash();
+
+                    abilityTimer.Start(cooldownTimer);
+                    abilityTimeRemaining = abilityDuration;
+                }
             }
-
             base.StartAbility();
+
         }
 
         public override void ProcessAbility()

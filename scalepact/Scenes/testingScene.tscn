@@ -143,21 +143,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 [node name="Enemy" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9797, 1.15, 4.08789)
 
-[node name="StateMachine" parent="Enemies/Enemy" index="0" node_paths=PackedStringArray("PatrolPath")]
+[node name="StateMachine" parent="Enemies/Enemy" index="1" node_paths=PackedStringArray("PatrolPath")]
 PatrolPath = NodePath("../../../Waypoints")
 
 [node name="GeneralSkeleton" parent="Enemies/Enemy/RigPivot/Rig" index="0"]
-bones/0/position = Vector3(-0.0637087, -0.0216635, 0.0749928)
-bones/0/rotation = Quaternion(-0.0310511, -0.0676643, -0.0343764, 0.996632)
-bones/2/rotation = Quaternion(-0.00807511, -0.00923869, 0.0371759, 0.999233)
-bones/3/rotation = Quaternion(0.0079854, -0.0143079, 0.0486773, 0.99868)
-bones/4/rotation = Quaternion(0.00838202, -0.0129675, 0.0490013, 0.998679)
-bones/5/rotation = Quaternion(0.0477528, 0.00487686, -0.02691, 0.998485)
-bones/6/rotation = Quaternion(0.0477946, 0.00487016, -0.0269914, 0.998481)
-bones/9/rotation = Quaternion(0.00279624, 0.026961, -0.07187, 0.997046)
-bones/10/rotation = Quaternion(0.583378, 0.0578122, 0.799229, -0.132517)
-bones/11/rotation = Quaternion(0.0282426, 0.70231, -0.0891266, 0.705704)
-bones/12/rotation = Quaternion(0.22546, 0.703043, 0.161346, 0.654879)
+bones/0/position = Vector3(-0.0667155, -0.0212872, 0.0786082)
+bones/0/rotation = Quaternion(-0.032178, -0.0679143, -0.0354169, 0.996543)
+bones/2/rotation = Quaternion(-0.00501883, -0.00943973, 0.0407812, 0.999111)
+bones/3/rotation = Quaternion(0.0168638, -0.0130581, 0.0516939, 0.998435)
+bones/4/rotation = Quaternion(0.017269, -0.0111977, 0.0520109, 0.998434)
+bones/5/rotation = Quaternion(0.0434717, 0.00531081, -0.0313401, 0.998549)
+bones/6/rotation = Quaternion(0.0434716, 0.00531089, -0.0313402, 0.998549)
+bones/9/rotation = Quaternion(0.00497919, 0.00917629, -0.096496, 0.995279)
+bones/10/rotation = Quaternion(0.6118, 0.0837355, 0.774313, -0.138309)
+bones/11/rotation = Quaternion(0.0215492, 0.703124, -0.0824985, 0.705937)
+bones/12/rotation = Quaternion(0.221098, 0.694746, 0.16409, 0.664469)
 bones/13/rotation = Quaternion(0.362052, 0.521091, -0.460872, -0.620467)
 bones/14/rotation = Quaternion(-0.0733182, 0.186071, 0.0405881, 0.978956)
 bones/16/rotation = Quaternion(0.0654328, -0.00433365, -0.217917, 0.973762)
@@ -166,69 +166,69 @@ bones/18/rotation = Quaternion(-0.00685528, 0.00554012, -0.142162, 0.989804)
 bones/20/rotation = Quaternion(-0.10052, 0.680664, 0.167109, 0.706164)
 bones/21/rotation = Quaternion(0.42953, 0.833552, 0.306887, -0.162835)
 bones/22/rotation = Quaternion(-0.0179231, 0.00640528, -0.195053, 0.980608)
-bones/25/rotation = Quaternion(0.00982276, 0.0488827, 0.106881, 0.993021)
-bones/26/rotation = Quaternion(0.617373, -0.144586, -0.718245, -0.286477)
-bones/27/rotation = Quaternion(0.018992, -0.703418, 0.0799628, 0.706008)
-bones/28/rotation = Quaternion(0.138916, -0.652404, -0.114146, 0.736236)
-bones/29/rotation = Quaternion(-0.574232, 0.450805, 0.572874, -0.372624)
-bones/30/rotation = Quaternion(0.0228863, 0.195258, 0.0383443, 0.979735)
-bones/32/rotation = Quaternion(0.0810208, 0.00545197, 0.222935, 0.971445)
-bones/33/rotation = Quaternion(-0.536839, 0.459649, 0.589746, -0.390801)
-bones/34/rotation = Quaternion(-0.00689478, 0.00374467, -0.0935299, 0.995586)
-bones/36/rotation = Quaternion(-0.104564, -0.683108, -0.163184, 0.704132)
-bones/37/rotation = Quaternion(0.16929, 0.303353, -0.824151, 0.447318)
-bones/38/rotation = Quaternion(-0.0182213, 0.000416865, -0.0122824, 0.999758)
-bones/43/rotation = Quaternion(-0.0771257, 0.00873931, 0.995136, -0.0606651)
-bones/44/rotation = Quaternion(0.000228019, 0.981015, -0.186844, -0.0519494)
-bones/45/rotation = Quaternion(-0.0196908, 0.593846, -0.804059, 0.0211814)
-bones/46/rotation = Quaternion(0.0014091, -6.41196e-08, -2.11634e-07, 0.999999)
-bones/48/rotation = Quaternion(0.14265, 0.160558, 0.970962, -0.10538)
-bones/49/rotation = Quaternion(-0.0253102, 0.987947, -0.150733, -0.0245074)
-bones/50/rotation = Quaternion(-0.0449876, 0.728463, -0.681597, 0.0523815)
-bones/51/rotation = Quaternion(-0.0201673, -1.01519e-08, -1.03655e-07, 0.999797)
+bones/25/rotation = Quaternion(0.01103, 0.0596358, 0.116762, 0.991307)
+bones/26/rotation = Quaternion(0.6162, -0.164472, -0.710418, -0.297577)
+bones/27/rotation = Quaternion(0.0200706, -0.703295, 0.0810319, 0.705979)
+bones/28/rotation = Quaternion(0.140931, -0.646789, -0.118801, 0.74006)
+bones/29/rotation = Quaternion(-0.568617, 0.46728, 0.570405, -0.364639)
+bones/30/rotation = Quaternion(-0.021859, 0.228603, 0.00264829, 0.973271)
+bones/32/rotation = Quaternion(0.0742418, 0.00518186, 0.218463, 0.973003)
+bones/33/rotation = Quaternion(-0.556346, 0.436333, 0.60478, -0.366516)
+bones/34/rotation = Quaternion(-0.00689529, 0.00371267, -0.092731, 0.99566)
+bones/36/rotation = Quaternion(-0.110708, -0.686604, -0.157565, 0.701065)
+bones/37/rotation = Quaternion(0.154774, 0.311671, -0.845059, 0.405934)
+bones/38/rotation = Quaternion(-0.0179566, 0.00559658, -0.165133, 0.986092)
+bones/43/rotation = Quaternion(-0.076974, 0.00458562, 0.995065, -0.0624396)
+bones/44/rotation = Quaternion(0.000751681, 0.981704, -0.183062, -0.0524023)
+bones/45/rotation = Quaternion(-0.019725, 0.594455, -0.803612, 0.0210233)
+bones/46/rotation = Quaternion(0.00107452, -8.98056e-08, -2.3732e-07, 1)
+bones/48/rotation = Quaternion(0.144221, 0.159577, 0.970644, -0.10764)
+bones/49/rotation = Quaternion(-0.024626, 0.987544, -0.153293, -0.0255162)
+bones/50/rotation = Quaternion(-0.0452256, 0.726794, -0.683352, 0.0524853)
+bones/51/rotation = Quaternion(-0.0204028, 2.7873e-08, -1.02429e-07, 0.999792)
 bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.338614, 0.845875, -0.41211, -0.940385, 0.319079, -0.11775, 0.0318937, 0.427414, 0.903493, 0.228332, 1.35154, -0.025488)
+transform = Transform3D(0.349234, 0.859519, -0.373179, -0.936833, 0.328575, -0.119933, 0.0195329, 0.391491, 0.919975, 0.224464, 1.35137, -0.017007)
 
 [node name="Item_WarriorSholderArmor1" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.750795, 0.409559, 0.518235, 0.397275, -0.90679, 0.141078, 0.527711, 0.0999613, -0.843522, 0.530228, 0.107544, 0.10485)
+transform = Transform3D(0.75058, 0.44963, 0.484213, 0.414261, -0.891094, 0.185304, 0.514798, 0.0615049, -0.855102, 0.579313, 0.129695, 0.0579921)
 
 [node name="Item_Sword" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.959992, -0.195415, -0.200573, 0.208255, 0.977046, 0.0448391, 0.187206, -0.0848154, 0.978652, 0.0339862, 1.25643, -0.163178)
+transform = Transform3D(0.95687, -0.218773, -0.191151, 0.224048, 0.974558, 0.00615943, 0.184941, -0.0487209, 0.981541, 0.0293669, 1.26214, -0.159751)
 
 [node name="Item_SwordHolder" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.959992, -0.195415, -0.200573, 0.208255, 0.977046, 0.0448391, 0.187206, -0.0848154, 0.978652, 0.25072, 0.00220156, 0.102165)
+transform = Transform3D(0.95687, -0.218773, -0.191151, 0.224048, 0.974558, 0.00615943, 0.184941, -0.0487209, 0.981541, 0.277758, 0.00487792, 0.0594897)
 
 [node name="Item_WaterCanteen" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, -0.195752, 0.913552, -0.00142371)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, -0.196647, 0.914053, 0.000136022)
 
 [node name="Item_WaterBladder_01" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, 0.1955, 0.737549, 0.0413454)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, 0.194193, 0.737276, 0.0434751)
 
 [node name="SM_Prop_SpellBook_03" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.206094, 0.950293, -0.233383, -0.896122, 0.0874898, -0.435099, -0.393053, 0.298811, 0.86961, 0.222552, 0.940712, 0.0268459)
+transform = Transform3D(0.204301, 0.950337, -0.234778, -0.897412, 0.0860192, -0.432728, -0.391042, 0.299099, 0.870417, 0.221702, 0.940347, 0.028557)
 
 [node name="Item_Pouch" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="7"]
-transform = Transform3D(1.04767, 0.0700476, -0.144315, -0.0681705, 1.05752, 0.0184101, 0.145211, -0.00891571, 1.04985, -0.0847316, -0.0887712, 0.0263519)
+transform = Transform3D(1.04744, 0.072397, -0.144794, -0.0701833, 1.05734, 0.0209648, 0.14588, -0.0111308, 1.04973, -0.087863, -0.0884516, 0.0300997)
 
 [node name="SM_Prop_Vials" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="8"]
-transform = Transform3D(-0.186769, 0.0727235, -0.979708, 0.0699737, 0.995708, 0.0605715, 0.979909, -0.057241, -0.191056, -0.187816, 0.91689, 0.00398681)
+transform = Transform3D(-0.187098, 0.0749597, -0.979477, 0.0724734, 0.99542, 0.0623361, 0.979664, -0.0593231, -0.191674, -0.188706, 0.917386, 0.0055434)
 
 [node name="Item_SwordSheath" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.400595, -0.241513, 0.883852, 0.47775, 0.878183, 0.0234302, -0.781843, 0.412875, 0.467179, 0.242371, 0.718279, 0.000404261)
+transform = Transform3D(0.402041, -0.23977, 0.883671, 0.475196, 0.879593, 0.0224656, -0.782657, 0.410884, 0.46757, 0.241041, 0.717814, 0.00259855)
 
 [node name="Item_Dagger" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, 0.209313, 0.845297, 0.0582752)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, 0.208236, 0.845028, 0.0601826)
 
 [node name="Item_CoinBag" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, -0.206399, 0.868586, 0.00535781)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, -0.207396, 0.869126, 0.00700787)
 
 [node name="RightHandAttachment" parent="Enemies/Enemy/RigPivot" index="1"]
-transform = Transform3D(-0.0095402, -0.0619206, 0.998035, 0.370782, -0.92715, -0.0539785, 0.928671, 0.369539, 0.0318042, -0.263735, 0.692508, -0.107464)
+transform = Transform3D(0.00229324, -0.0625463, 0.998039, 0.368421, -0.927785, -0.0589901, 0.929656, 0.367834, 0.0209157, -0.27202, 0.688568, -0.10543)
 
-[node name="MeleeAttack" parent="Enemies/Enemy" index="5"]
-transform = Transform3D(-0.0095402, -0.0619206, 0.998035, 0.370782, -0.92715, -0.0539785, 0.928671, 0.369539, 0.0318042, -0.263735, -0.307492, -0.107464)
+[node name="MeleeAttack" parent="Enemies/Enemy" index="6"]
+transform = Transform3D(0.00229324, -0.0625463, 0.998039, 0.368421, -0.927785, -0.0589901, 0.929656, 0.367834, 0.0209157, -0.27202, -0.311432, -0.10543)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83837, 1.15, 14.0983)
@@ -236,21 +236,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83837, 1.15, 14.0983)
 [node name="Enemy3" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19112, 1.15, 19.2467)
 
-[node name="StateMachine" parent="Enemies/Enemy3" index="0" node_paths=PackedStringArray("WanderArea")]
+[node name="StateMachine" parent="Enemies/Enemy3" index="1" node_paths=PackedStringArray("WanderArea")]
 WanderArea = NodePath("../../../WanderArea")
 
 [node name="GeneralSkeleton" parent="Enemies/Enemy3/RigPivot/Rig" index="0"]
-bones/0/position = Vector3(-0.0637087, -0.0216635, 0.0749928)
-bones/0/rotation = Quaternion(-0.0310511, -0.0676643, -0.0343764, 0.996632)
-bones/2/rotation = Quaternion(-0.00807511, -0.00923869, 0.0371759, 0.999233)
-bones/3/rotation = Quaternion(0.0079854, -0.0143079, 0.0486773, 0.99868)
-bones/4/rotation = Quaternion(0.00838202, -0.0129675, 0.0490013, 0.998679)
-bones/5/rotation = Quaternion(0.0477528, 0.00487686, -0.02691, 0.998485)
-bones/6/rotation = Quaternion(0.0477946, 0.00487016, -0.0269914, 0.998481)
-bones/9/rotation = Quaternion(0.00279624, 0.026961, -0.07187, 0.997046)
-bones/10/rotation = Quaternion(0.583378, 0.0578122, 0.799229, -0.132517)
-bones/11/rotation = Quaternion(0.0282426, 0.70231, -0.0891266, 0.705704)
-bones/12/rotation = Quaternion(0.22546, 0.703043, 0.161346, 0.654879)
+bones/0/position = Vector3(-0.0667155, -0.0212872, 0.0786082)
+bones/0/rotation = Quaternion(-0.032178, -0.0679143, -0.0354169, 0.996543)
+bones/2/rotation = Quaternion(-0.00501883, -0.00943973, 0.0407812, 0.999111)
+bones/3/rotation = Quaternion(0.0168638, -0.0130581, 0.0516939, 0.998435)
+bones/4/rotation = Quaternion(0.017269, -0.0111977, 0.0520109, 0.998434)
+bones/5/rotation = Quaternion(0.0434717, 0.00531081, -0.0313401, 0.998549)
+bones/6/rotation = Quaternion(0.0434716, 0.00531089, -0.0313402, 0.998549)
+bones/9/rotation = Quaternion(0.00497919, 0.00917629, -0.096496, 0.995279)
+bones/10/rotation = Quaternion(0.6118, 0.0837355, 0.774313, -0.138309)
+bones/11/rotation = Quaternion(0.0215492, 0.703124, -0.0824985, 0.705937)
+bones/12/rotation = Quaternion(0.221098, 0.694746, 0.16409, 0.664469)
 bones/13/rotation = Quaternion(0.362052, 0.521091, -0.460872, -0.620467)
 bones/14/rotation = Quaternion(-0.0733182, 0.186071, 0.0405881, 0.978956)
 bones/16/rotation = Quaternion(0.0654328, -0.00433365, -0.217917, 0.973762)
@@ -259,69 +259,69 @@ bones/18/rotation = Quaternion(-0.00685528, 0.00554012, -0.142162, 0.989804)
 bones/20/rotation = Quaternion(-0.10052, 0.680664, 0.167109, 0.706164)
 bones/21/rotation = Quaternion(0.42953, 0.833552, 0.306887, -0.162835)
 bones/22/rotation = Quaternion(-0.0179231, 0.00640528, -0.195053, 0.980608)
-bones/25/rotation = Quaternion(0.00982276, 0.0488827, 0.106881, 0.993021)
-bones/26/rotation = Quaternion(0.617373, -0.144586, -0.718245, -0.286477)
-bones/27/rotation = Quaternion(0.018992, -0.703418, 0.0799628, 0.706008)
-bones/28/rotation = Quaternion(0.138916, -0.652404, -0.114146, 0.736236)
-bones/29/rotation = Quaternion(-0.574232, 0.450805, 0.572874, -0.372624)
-bones/30/rotation = Quaternion(0.0228863, 0.195258, 0.0383443, 0.979735)
-bones/32/rotation = Quaternion(0.0810208, 0.00545197, 0.222935, 0.971445)
-bones/33/rotation = Quaternion(-0.536839, 0.459649, 0.589746, -0.390801)
-bones/34/rotation = Quaternion(-0.00689478, 0.00374467, -0.0935299, 0.995586)
-bones/36/rotation = Quaternion(-0.104564, -0.683108, -0.163184, 0.704132)
-bones/37/rotation = Quaternion(0.16929, 0.303353, -0.824151, 0.447318)
-bones/38/rotation = Quaternion(-0.0182213, 0.000416865, -0.0122824, 0.999758)
-bones/43/rotation = Quaternion(-0.0771257, 0.00873931, 0.995136, -0.0606651)
-bones/44/rotation = Quaternion(0.000228019, 0.981015, -0.186844, -0.0519494)
-bones/45/rotation = Quaternion(-0.0196908, 0.593846, -0.804059, 0.0211814)
-bones/46/rotation = Quaternion(0.0014091, -6.41196e-08, -2.11634e-07, 0.999999)
-bones/48/rotation = Quaternion(0.14265, 0.160558, 0.970962, -0.10538)
-bones/49/rotation = Quaternion(-0.0253102, 0.987947, -0.150733, -0.0245074)
-bones/50/rotation = Quaternion(-0.0449876, 0.728463, -0.681597, 0.0523815)
-bones/51/rotation = Quaternion(-0.0201673, -1.01519e-08, -1.03655e-07, 0.999797)
+bones/25/rotation = Quaternion(0.01103, 0.0596358, 0.116762, 0.991307)
+bones/26/rotation = Quaternion(0.6162, -0.164472, -0.710418, -0.297577)
+bones/27/rotation = Quaternion(0.0200706, -0.703295, 0.0810319, 0.705979)
+bones/28/rotation = Quaternion(0.140931, -0.646789, -0.118801, 0.74006)
+bones/29/rotation = Quaternion(-0.568617, 0.46728, 0.570405, -0.364639)
+bones/30/rotation = Quaternion(-0.021859, 0.228603, 0.00264829, 0.973271)
+bones/32/rotation = Quaternion(0.0742418, 0.00518186, 0.218463, 0.973003)
+bones/33/rotation = Quaternion(-0.556346, 0.436333, 0.60478, -0.366516)
+bones/34/rotation = Quaternion(-0.00689529, 0.00371267, -0.092731, 0.99566)
+bones/36/rotation = Quaternion(-0.110708, -0.686604, -0.157565, 0.701065)
+bones/37/rotation = Quaternion(0.154774, 0.311671, -0.845059, 0.405934)
+bones/38/rotation = Quaternion(-0.0179566, 0.00559658, -0.165133, 0.986092)
+bones/43/rotation = Quaternion(-0.076974, 0.00458562, 0.995065, -0.0624396)
+bones/44/rotation = Quaternion(0.000751681, 0.981704, -0.183062, -0.0524023)
+bones/45/rotation = Quaternion(-0.019725, 0.594455, -0.803612, 0.0210233)
+bones/46/rotation = Quaternion(0.00107452, -8.98056e-08, -2.3732e-07, 1)
+bones/48/rotation = Quaternion(0.144221, 0.159577, 0.970644, -0.10764)
+bones/49/rotation = Quaternion(-0.024626, 0.987544, -0.153293, -0.0255162)
+bones/50/rotation = Quaternion(-0.0452256, 0.726794, -0.683352, 0.0524853)
+bones/51/rotation = Quaternion(-0.0204028, 2.7873e-08, -1.02429e-07, 0.999792)
 bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.338614, 0.845875, -0.41211, -0.940385, 0.319079, -0.11775, 0.0318937, 0.427414, 0.903493, 0.228332, 1.35154, -0.025488)
+transform = Transform3D(0.349234, 0.859519, -0.373179, -0.936833, 0.328575, -0.119933, 0.0195329, 0.391491, 0.919975, 0.224464, 1.35137, -0.017007)
 
 [node name="Item_WarriorSholderArmor1" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.750795, 0.409559, 0.518235, 0.397275, -0.90679, 0.141078, 0.527711, 0.0999613, -0.843522, 0.530228, 0.107544, 0.10485)
+transform = Transform3D(0.75058, 0.44963, 0.484213, 0.414261, -0.891094, 0.185304, 0.514798, 0.0615049, -0.855102, 0.579313, 0.129695, 0.0579921)
 
 [node name="Item_Sword" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.959992, -0.195415, -0.200573, 0.208255, 0.977046, 0.0448391, 0.187206, -0.0848154, 0.978652, 0.0339862, 1.25643, -0.163178)
+transform = Transform3D(0.95687, -0.218773, -0.191151, 0.224048, 0.974558, 0.00615943, 0.184941, -0.0487209, 0.981541, 0.0293669, 1.26214, -0.159751)
 
 [node name="Item_SwordHolder" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.959992, -0.195415, -0.200573, 0.208255, 0.977046, 0.0448391, 0.187206, -0.0848154, 0.978652, 0.25072, 0.00220156, 0.102165)
+transform = Transform3D(0.95687, -0.218773, -0.191151, 0.224048, 0.974558, 0.00615943, 0.184941, -0.0487209, 0.981541, 0.277758, 0.00487792, 0.0594897)
 
 [node name="Item_WaterCanteen" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, -0.195752, 0.913552, -0.00142371)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, -0.196647, 0.914053, 0.000136022)
 
 [node name="Item_WaterBladder_01" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, 0.1955, 0.737549, 0.0413454)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, 0.194193, 0.737276, 0.0434751)
 
 [node name="SM_Prop_SpellBook_03" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.206094, 0.950293, -0.233383, -0.896122, 0.0874898, -0.435099, -0.393053, 0.298811, 0.86961, 0.222552, 0.940712, 0.0268459)
+transform = Transform3D(0.204301, 0.950337, -0.234778, -0.897412, 0.0860192, -0.432728, -0.391042, 0.299099, 0.870417, 0.221702, 0.940347, 0.028557)
 
 [node name="Item_Pouch" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="7"]
-transform = Transform3D(1.04767, 0.0700476, -0.144315, -0.0681705, 1.05752, 0.0184101, 0.145211, -0.00891571, 1.04985, -0.0847316, -0.0887712, 0.0263519)
+transform = Transform3D(1.04744, 0.072397, -0.144794, -0.0701833, 1.05734, 0.0209648, 0.14588, -0.0111308, 1.04973, -0.087863, -0.0884516, 0.0300997)
 
 [node name="SM_Prop_Vials" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="8"]
-transform = Transform3D(-0.186769, 0.0727235, -0.979708, 0.0699737, 0.995708, 0.0605715, 0.979909, -0.057241, -0.191056, -0.187816, 0.91689, 0.00398681)
+transform = Transform3D(-0.187098, 0.0749597, -0.979477, 0.0724734, 0.99542, 0.0623361, 0.979664, -0.0593231, -0.191674, -0.188706, 0.917386, 0.0055434)
 
 [node name="Item_SwordSheath" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.400595, -0.241513, 0.883852, 0.47775, 0.878183, 0.0234302, -0.781843, 0.412875, 0.467179, 0.242371, 0.718279, 0.000404261)
+transform = Transform3D(0.402041, -0.23977, 0.883671, 0.475196, 0.879593, 0.0224656, -0.782657, 0.410884, 0.46757, 0.241041, 0.717814, 0.00259855)
 
 [node name="Item_Dagger" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, 0.209313, 0.845297, 0.0582752)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, 0.208236, 0.845028, 0.0601826)
 
 [node name="Item_CoinBag" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.98848, 0.0727234, -0.132738, -0.0643192, 0.995708, 0.0665451, 0.137008, -0.0572409, 0.988915, -0.206399, 0.868586, 0.00535781)
+transform = Transform3D(0.988267, 0.0749597, -0.13308, -0.0662183, 0.995421, 0.0689443, 0.137638, -0.059323, 0.988705, -0.207396, 0.869126, 0.00700787)
 
 [node name="RightHandAttachment" parent="Enemies/Enemy3/RigPivot" index="1"]
-transform = Transform3D(-0.0095402, -0.0619206, 0.998035, 0.370782, -0.92715, -0.0539785, 0.928671, 0.369539, 0.0318042, -0.263735, 0.692508, -0.107464)
+transform = Transform3D(0.00229324, -0.0625463, 0.998039, 0.368421, -0.927785, -0.0589901, 0.929656, 0.367834, 0.0209157, -0.27202, 0.688568, -0.105431)
 
-[node name="MeleeAttack" parent="Enemies/Enemy3" index="5"]
-transform = Transform3D(-0.0095402, -0.0619206, 0.998035, 0.370782, -0.92715, -0.0539785, 0.928671, 0.369539, 0.0318042, -0.263735, -0.307492, -0.107464)
+[node name="MeleeAttack" parent="Enemies/Enemy3" index="6"]
+transform = Transform3D(0.00229324, -0.0625463, 0.998039, 0.368421, -0.927785, -0.0589901, 0.929656, 0.367834, 0.0209157, -0.27202, -0.311432, -0.105431)
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9305, 1.15, 6.2938)

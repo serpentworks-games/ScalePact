@@ -1,7 +1,3 @@
-using System.Diagnostics;
-using Godot;
-using Scalepact.Utilities;
-
 namespace Scalepact.Enemies
 {
     public partial class EnemySuspicionState : EnemyBaseState

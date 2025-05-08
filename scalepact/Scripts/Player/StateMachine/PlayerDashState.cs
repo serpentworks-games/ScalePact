@@ -1,5 +1,5 @@
 using Godot;
-using Scalepact.Abilities;
+using Scalepact.Abilities.PlayerAbilities;
 
 namespace Scalepact.Player
 {

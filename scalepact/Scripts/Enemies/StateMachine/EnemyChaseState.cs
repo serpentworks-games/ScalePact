@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Scalepact.Enemies
 {
     public partial class EnemyChaseState : EnemyBaseState
