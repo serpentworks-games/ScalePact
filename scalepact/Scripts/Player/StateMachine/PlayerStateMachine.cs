@@ -1,4 +1,5 @@
 using Godot;
+using Scalepact.Abilities.PlayerAbilities;
 using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
 using Scalepact.Utilities;
@@ -21,6 +22,10 @@ namespace Scalepact.Player
         [Export] public float AnimInterpolationDecay { get; private set; } = 20f;
         [Export] public float AnimBlendWeight { get; private set; } = 5f;
 
+        [ExportCategory("Abilities")]
+        [Export] public BiteAttackAbility MeleeBiteAbility { get; private set; }
+        [Export] public DashAbility DashAbility { get; private set; }
+
         //Public variables
         public Vector3 AttackDirection { get; private set; } = Vector3.Zero;
         [Export] public CollisionShape3D Collider { get; private set; }
@@ -33,6 +38,8 @@ namespace Scalepact.Player
         public AnimationTree AnimationTree { get; private set; }
         public Damager BiteAttackCollider { get; private set; }
         public HealthComponent HealthComponent { get; private set; }
+
+        Vector2 inputDir;
 
         public override void _Ready()
         {
@@ -48,6 +55,43 @@ namespace Scalepact.Player
 
             base._Ready();
         }
+
+        #region Input
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            inputDir = Input.GetVector(
+                "move_left", "move_right", "move_forward", "move_backward");
+
+            if (@event.IsActionPressed("jump")) ChangeToJump();
+
+            if (!PlayerCharBody3D.IsOnFloor() && @event.IsActionPressed("jump"))
+            {
+                //switch to gliding
+                //return;
+                GD.Print("Activating gliding!");
+            }
+
+            if (!GetMovementDirection().IsZeroApprox())
+            {
+                if (@event.IsActionPressed("ability_dash") && DashAbility.IsAbilityTimerStopped())
+                {
+                    ChangeToDash();
+                    DashAbility.TriggerAbility();
+                }
+            }
+
+            if (PlayerCharBody3D.IsOnFloor())
+            {
+                if (@event.IsActionPressed("ability_melee_attack") && MeleeBiteAbility.IsAbilityTimerStopped())
+                {
+                    MeleeBiteAbility.TriggerAbility();
+                    ChangeToAttack();
+                }
+            }
+
+            base._UnhandledInput(@event);
+        }
+        #endregion
 
         #region State Changers
         public void ChangeToAttack()
@@ -134,9 +178,6 @@ namespace Scalepact.Player
 
         public Vector3 GetMovementDirection()
         {
-            Vector2 inputDir = Input.GetVector(
-                "move_left", "move_right", "move_forward", "move_backward");
-
             Vector3 inputVector = new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
 
             return CameraController.HorizontalPivot.GlobalTransform.Basis * inputVector;

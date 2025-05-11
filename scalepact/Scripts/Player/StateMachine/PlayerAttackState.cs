@@ -1,3 +1,5 @@
+using Godot;
+
 namespace Scalepact.Player
 {
     public partial class PlayerAttackState : PlayerBaseState
@@ -17,9 +19,10 @@ namespace Scalepact.Player
         {
             base._PhysicsProcess(delta);
 
-            if (!stateMachine.IsOneShotAnimationActive(PlayerStringRefs.PlayerMeleeAttackIsActive))
+            if (!stateMachine.MeleeBiteAbility.IsInAbility &&
+                !stateMachine.IsOneShotAnimationActive(PlayerStringRefs.PlayerMeleeAttackIsActive))
             {
-                stateMachine.ChangeState(PlayerStringRefs.PlayerMoveState);
+                stateMachine.ChangeToGroundMovement();
                 return;
             }
 

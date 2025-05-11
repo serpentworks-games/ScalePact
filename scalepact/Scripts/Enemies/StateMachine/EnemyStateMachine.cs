@@ -1,4 +1,5 @@
 using Godot;
+using Scalepact.Abilities.EnemyAbilities;
 using Scalepact.DamageSystem;
 using Scalepact.Gameplay;
 using Scalepact.StateMachines;
@@ -17,7 +18,7 @@ namespace Scalepact.Enemies
         [Export] public float PointDwellTime { get; private set; } = 1f;
         [Export] public float SuspicionTime { get; private set; } = 3f;
 
-        [Signal] public delegate void OnAttackTriggeredEventHandler();
+        [Export] public EnemyMeleeAttackAbility MeleeAttackAbility { get; private set; }
 
         //Public Variables
         public Node3D Player { get; private set; }
@@ -95,7 +96,7 @@ namespace Scalepact.Enemies
         {
             ChangeState("AttackState");
             OneShotAnimationRequest(animAttack1Trigger);
-            EmitSignal(SignalName.OnAttackTriggered);
+            MeleeAttackAbility.TriggerAbility();
         }
         public void ChangeToChaseState()
         {

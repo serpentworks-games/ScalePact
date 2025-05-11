@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Scalepact.Player
 {
 	public partial class PlayerMoveState : PlayerBaseState
@@ -16,12 +14,6 @@ namespace Scalepact.Player
 
 		public override void _PhysicsProcess(double delta)
 		{
-			if (Input.IsActionPressed("jump"))
-			{
-				stateMachine.ChangeToJump();
-				return;
-			}
-
 			GetVelocityAndDirection();
 
 			velocity = stateMachine.ResolveMovementPhysics(

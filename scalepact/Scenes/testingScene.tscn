@@ -143,6 +143,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 [node name="Enemy" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9797, 1.15, 4.08789)
 
+[node name="MeleeAttack" parent="Enemies/Enemy/Abilities" index="0"]
+abilityDuration = 0.0
+
 [node name="StateMachine" parent="Enemies/Enemy" index="1" node_paths=PackedStringArray("PatrolPath")]
 PatrolPath = NodePath("../../../Waypoints")
 
@@ -158,14 +161,6 @@ bones/9/rotation = Quaternion(0.00497919, 0.00917629, -0.096496, 0.995279)
 bones/10/rotation = Quaternion(0.6118, 0.0837355, 0.774313, -0.138309)
 bones/11/rotation = Quaternion(0.0215492, 0.703124, -0.0824985, 0.705937)
 bones/12/rotation = Quaternion(0.221098, 0.694746, 0.16409, 0.664469)
-bones/13/rotation = Quaternion(0.362052, 0.521091, -0.460872, -0.620467)
-bones/14/rotation = Quaternion(-0.0733182, 0.186071, 0.0405881, 0.978956)
-bones/16/rotation = Quaternion(0.0654328, -0.00433365, -0.217917, 0.973762)
-bones/17/rotation = Quaternion(-0.336185, -0.621662, 0.407263, 0.578492)
-bones/18/rotation = Quaternion(-0.00685528, 0.00554012, -0.142162, 0.989804)
-bones/20/rotation = Quaternion(-0.10052, 0.680664, 0.167109, 0.706164)
-bones/21/rotation = Quaternion(0.42953, 0.833552, 0.306887, -0.162835)
-bones/22/rotation = Quaternion(-0.0179231, 0.00640528, -0.195053, 0.980608)
 bones/25/rotation = Quaternion(0.01103, 0.0596358, 0.116762, 0.991307)
 bones/26/rotation = Quaternion(0.6162, -0.164472, -0.710418, -0.297577)
 bones/27/rotation = Quaternion(0.0200706, -0.703295, 0.0810319, 0.705979)
@@ -186,7 +181,6 @@ bones/48/rotation = Quaternion(0.144221, 0.159577, 0.970644, -0.10764)
 bones/49/rotation = Quaternion(-0.024626, 0.987544, -0.153293, -0.0255162)
 bones/50/rotation = Quaternion(-0.0452256, 0.726794, -0.683352, 0.0524853)
 bones/51/rotation = Quaternion(-0.0204028, 2.7873e-08, -1.02429e-07, 0.999792)
-bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="0"]
 transform = Transform3D(0.349234, 0.859519, -0.373179, -0.936833, 0.328575, -0.119933, 0.0195329, 0.391491, 0.919975, 0.224464, 1.35137, -0.017007)
@@ -236,6 +230,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83837, 1.15, 14.0983)
 [node name="Enemy3" parent="Enemies" instance=ExtResource("2_8bae3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19112, 1.15, 19.2467)
 
+[node name="MeleeAttack" parent="Enemies/Enemy3/Abilities" index="0"]
+abilityDuration = 0.0
+
 [node name="StateMachine" parent="Enemies/Enemy3" index="1" node_paths=PackedStringArray("WanderArea")]
 WanderArea = NodePath("../../../WanderArea")
 
@@ -251,14 +248,6 @@ bones/9/rotation = Quaternion(0.00497919, 0.00917629, -0.096496, 0.995279)
 bones/10/rotation = Quaternion(0.6118, 0.0837355, 0.774313, -0.138309)
 bones/11/rotation = Quaternion(0.0215492, 0.703124, -0.0824985, 0.705937)
 bones/12/rotation = Quaternion(0.221098, 0.694746, 0.16409, 0.664469)
-bones/13/rotation = Quaternion(0.362052, 0.521091, -0.460872, -0.620467)
-bones/14/rotation = Quaternion(-0.0733182, 0.186071, 0.0405881, 0.978956)
-bones/16/rotation = Quaternion(0.0654328, -0.00433365, -0.217917, 0.973762)
-bones/17/rotation = Quaternion(-0.336185, -0.621662, 0.407263, 0.578492)
-bones/18/rotation = Quaternion(-0.00685528, 0.00554012, -0.142162, 0.989804)
-bones/20/rotation = Quaternion(-0.10052, 0.680664, 0.167109, 0.706164)
-bones/21/rotation = Quaternion(0.42953, 0.833552, 0.306887, -0.162835)
-bones/22/rotation = Quaternion(-0.0179231, 0.00640528, -0.195053, 0.980608)
 bones/25/rotation = Quaternion(0.01103, 0.0596358, 0.116762, 0.991307)
 bones/26/rotation = Quaternion(0.6162, -0.164472, -0.710418, -0.297577)
 bones/27/rotation = Quaternion(0.0200706, -0.703295, 0.0810319, 0.705979)
@@ -279,7 +268,6 @@ bones/48/rotation = Quaternion(0.144221, 0.159577, 0.970644, -0.10764)
 bones/49/rotation = Quaternion(-0.024626, 0.987544, -0.153293, -0.0255162)
 bones/50/rotation = Quaternion(-0.0452256, 0.726794, -0.683352, 0.0524853)
 bones/51/rotation = Quaternion(-0.0204028, 2.7873e-08, -1.02429e-07, 0.999792)
-bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="0"]
 transform = Transform3D(0.349234, 0.859519, -0.373179, -0.936833, 0.328575, -0.119933, 0.0195329, 0.391491, 0.919975, 0.224464, 1.35137, -0.017007)

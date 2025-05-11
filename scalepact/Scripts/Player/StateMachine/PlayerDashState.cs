@@ -1,12 +1,9 @@
 using Godot;
-using Scalepact.Abilities.PlayerAbilities;
 
 namespace Scalepact.Player
 {
     public partial class PlayerDashState : PlayerBaseState
     {
-        [Export] DashAbility dashAbility;
-
         public override void EnterState()
         {
             base.EnterState();
@@ -20,7 +17,7 @@ namespace Scalepact.Player
 
         public override void _PhysicsProcess(double delta)
         {
-            if (!dashAbility.IsInAbility)
+            if (!stateMachine.DashAbility.IsInAbility)
             {
                 stateMachine.ChangeToGroundMovement();
                 return;
@@ -29,7 +26,7 @@ namespace Scalepact.Player
             GetVelocityAndDirection();
 
             velocity = stateMachine.ResolveMovementPhysics(
-               direction, velocity, stateMachine.MoveSpeed * dashAbility.DashSpeedBoost, (float)delta);
+               direction, velocity, stateMachine.MoveSpeed * stateMachine.DashAbility.DashSpeedBoost, (float)delta);
 
             GroundedCharacterMovement(velocity, delta);
         }

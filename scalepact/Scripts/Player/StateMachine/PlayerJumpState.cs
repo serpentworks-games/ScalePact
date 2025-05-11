@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Scalepact.Player
 {
     public partial class PlayerJumpState : PlayerBaseState
@@ -25,12 +23,6 @@ namespace Scalepact.Player
 
             AerialCharacterMovement(velocity, delta);
 
-            if (!stateMachine.PlayerCharBody3D.IsOnFloor() && Input.IsActionPressed("jump"))
-            {
-                //switch to gliding
-                //return;
-                GD.Print("Activing gliding!");
-            }
             if (stateMachine.PlayerCharBody3D.IsOnFloor())
             {
                 stateMachine.ChangeToGroundMovement();

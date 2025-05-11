@@ -1,5 +1,4 @@
 using Godot;
-using Scalepact.Enemies;
 
 namespace Scalepact.Abilities.EnemyAbilities
 {
@@ -7,21 +6,13 @@ namespace Scalepact.Abilities.EnemyAbilities
     {
         public override void _Ready()
         {
-            if (stateMachine is EnemyStateMachine)
-            {
-                EnemyStateMachine enemy = (EnemyStateMachine)stateMachine;
-                enemy.OnAttackTriggered += StartAbility;
-            }
             base._Ready();
         }
         public override void StartAbility()
         {
-            SetIsInAbility(true);
             GD.Print("Starting!");
-            abilityTimer.Start(cooldownTimer);
+            abilityTimer.Start(abilityCooldownTimer);
             abilityTimeRemaining = abilityDuration;
-
-
         }
 
         public override void ProcessAbility()

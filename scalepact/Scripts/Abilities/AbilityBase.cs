@@ -1,22 +1,11 @@
 using Godot;
-using Scalepact.StateMachines;
 
 namespace Scalepact.Abilities
 {
-    public enum AbilityName
-    {
-        NONE,
-        ability_melee_attack,
-        ability_range_attack,
-        ability_dash
-    }
-
     public partial class AbilityBase : Node3D
     {
-        [Export] AbilityName abilityName;
         [Export] protected float abilityDuration;
-        [Export] protected float cooldownTimer;
-        [Export] protected StateMachine stateMachine;
+        [Export] protected float abilityCooldownTimer;
 
         public bool IsInAbility { get; private set; }
 
@@ -34,22 +23,16 @@ namespace Scalepact.Abilities
         public virtual void ProcessAbility() { }
         public virtual void ResolveAbility() { }
 
-        public void SetIsInAbility(bool newState)
+        public void TriggerAbility()
         {
-            IsInAbility = newState;
+            if (!abilityTimer.IsStopped() || IsInAbility == true) return;
+            StartAbility();
+            IsInAbility = true;
         }
 
-        public override void _UnhandledInput(InputEvent @event)
+        public bool IsAbilityTimerStopped()
         {
-            if (!abilityTimer.IsStopped()) return;
-
-            if (abilityName == AbilityName.NONE) return;
-
-            if (@event.IsActionPressed(abilityName.ToString()))
-            {
-                StartAbility();
-                IsInAbility = true;
-            }
+            return abilityTimer.IsStopped();
         }
 
         public override void _PhysicsProcess(double delta)
@@ -57,6 +40,7 @@ namespace Scalepact.Abilities
             if (IsInAbility == false || abilityTimer.IsStopped()) return;
 
             abilityTimeRemaining -= (float)delta;
+
             if (abilityTimeRemaining <= 0)
             {
                 ResolveAbility();
