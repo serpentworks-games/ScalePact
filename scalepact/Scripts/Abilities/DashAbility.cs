@@ -16,7 +16,6 @@ namespace Scalepact.Abilities.PlayerAbilities
 
         public override void ResolveAbility()
         {
-            abilityTimer.Stop();
             base.ResolveAbility();
         }
     }

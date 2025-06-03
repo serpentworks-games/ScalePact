@@ -224,8 +224,8 @@ namespace Scalepact.Enemies
         public void TryApplyDamage()
         {
             GD.Print("Attack!");
-            AttackCollider.DealDamage();
-            AttackCollider.ClearExceptions();
+            //AttackCollider.DealDamage();
+            //AttackCollider.ClearExceptions();
         }
         #endregion
     }

@@ -3,5 +3,8 @@
         "cooldown",
         "Mathf",
         "Scalepact"
+    ],
+    "cSpell.ignoreWords": [
+        "Insta"
     ]
 }

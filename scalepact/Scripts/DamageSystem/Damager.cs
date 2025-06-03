@@ -9,7 +9,7 @@ namespace Scalepact.DamageSystem
         [Export] CollisionObject3D selfCollider;
         [Export] bool isInstaKill;
 
-        public void DealDamage()
+        public void DealDamage(float damageAmount)
         {
             for (int i = 0; i < GetCollisionCount(); i++)
             {
@@ -27,7 +27,7 @@ namespace Scalepact.DamageSystem
                         {
                             entity.HealthComponent.InstaKill();
                         }
-                        entity.HealthComponent.TakeDamage(damage);
+                        entity.HealthComponent.TakeDamage(damageAmount);
                     }
                     AddException(col);
                 }

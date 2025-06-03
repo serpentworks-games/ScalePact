@@ -201,11 +201,7 @@ namespace Scalepact.Player
         #endregion
 
         #region Combat Code
-        public void ApplyMeleeAttack()
-        {
-            BiteAttackCollider.DealDamage();
-            BiteAttackCollider.ClearExceptions();
-        }
+
         #endregion
 
     }

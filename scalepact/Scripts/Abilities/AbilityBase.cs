@@ -21,7 +21,7 @@ namespace Scalepact.Abilities
 
         public virtual void StartAbility() { }
         public virtual void ProcessAbility() { }
-        public virtual void ResolveAbility() { }
+        public virtual void ResolveAbility() { abilityTimer.Stop(); }
 
         public void TriggerAbility()
         {
