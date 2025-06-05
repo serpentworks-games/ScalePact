@@ -1,4 +1,5 @@
 using Godot;
+using Scalepact.Abilities;
 using Scalepact.Abilities.EnemyAbilities;
 using Scalepact.DamageSystem;
 using Scalepact.Gameplay;
@@ -18,7 +19,7 @@ namespace Scalepact.Enemies
         [Export] public float PointDwellTime { get; private set; } = 1f;
         [Export] public float SuspicionTime { get; private set; } = 3f;
 
-        [Export] public EnemyMeleeAttackAbility MeleeAttackAbility { get; private set; }
+        [Export] public CombatAbility MeleeAttackAbility { get; private set; }
 
         //Public Variables
         public Node3D Player { get; private set; }

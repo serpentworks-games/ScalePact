@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("scalepact")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc15326fe7cd21ccfebb8a0af90f55cb2993cff8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a82ee75bbac5c7cb2d89b9f28fa973dc19a4591")]
 [assembly: System.Reflection.AssemblyProductAttribute("scalepact")]
 [assembly: System.Reflection.AssemblyTitleAttribute("scalepact")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

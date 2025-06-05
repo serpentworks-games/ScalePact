@@ -7,7 +7,6 @@ namespace Scalepact.Player
         public override void EnterState()
         {
             base.EnterState();
-            GD.Print("Zoom!");
         }
 
         public override void _Process(double delta)
@@ -17,7 +16,7 @@ namespace Scalepact.Player
 
         public override void _PhysicsProcess(double delta)
         {
-            if (!stateMachine.DashAbility.IsInAbility)
+            if (stateMachine.DashAbility.IsAbilityDurationTimerStopped())
             {
                 stateMachine.ChangeToGroundMovement();
                 return;

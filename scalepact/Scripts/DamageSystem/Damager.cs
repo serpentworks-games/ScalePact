@@ -5,7 +5,6 @@ namespace Scalepact.DamageSystem
 {
     public partial class Damager : ShapeCast3D
     {
-        [Export] float damage;
         [Export] CollisionObject3D selfCollider;
         [Export] bool isInstaKill;
 

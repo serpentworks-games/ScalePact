@@ -1,4 +1,5 @@
 using Godot;
+using Scalepact.Abilities;
 using Scalepact.Abilities.PlayerAbilities;
 using Scalepact.DamageSystem;
 using Scalepact.StateMachines;
@@ -23,11 +24,12 @@ namespace Scalepact.Player
         [Export] public float AnimBlendWeight { get; private set; } = 5f;
 
         [ExportCategory("Abilities")]
-        [Export] public BiteAttackAbility MeleeBiteAbility { get; private set; }
+        [Export] public CombatAbility MeleeBiteAbility { get; private set; }
         [Export] public DashAbility DashAbility { get; private set; }
 
         //Public variables
         public Vector3 AttackDirection { get; private set; } = Vector3.Zero;
+        [ExportCategory("Other Refs")]
         [Export] public CollisionShape3D Collider { get; private set; }
 
         //Refs
@@ -36,7 +38,6 @@ namespace Scalepact.Player
         public Node3D RigPivot { get; private set; }
         public Node3D Rig { get; private set; }
         public AnimationTree AnimationTree { get; private set; }
-        public Damager BiteAttackCollider { get; private set; }
         public HealthComponent HealthComponent { get; private set; }
 
         Vector2 inputDir;
@@ -48,7 +49,6 @@ namespace Scalepact.Player
             RigPivot = GetNode<Node3D>("../RigPivot");
             Rig = RigPivot.GetChild<Node3D>(0); //Rig itself
             AnimationTree = GetNode<AnimationTree>("../AnimationTree");
-            BiteAttackCollider = GetNode<Damager>("%BiteAttackCollider");
             HealthComponent = GetNode<HealthComponent>("../HealthComponent");
 
             HealthComponent.OnDeathTriggered += OnDeathTriggered;
@@ -73,16 +73,17 @@ namespace Scalepact.Player
 
             if (!GetMovementDirection().IsZeroApprox())
             {
-                if (@event.IsActionPressed("ability_dash") && DashAbility.IsAbilityTimerStopped())
+                if (@event.IsActionPressed("ability_dash") && DashAbility.IsAbilityAvailable())
                 {
-                    ChangeToDash();
                     DashAbility.TriggerAbility();
+                    ChangeToDash();
+                    GD.Print("Triggering Dash!");
                 }
             }
 
             if (PlayerCharBody3D.IsOnFloor())
             {
-                if (@event.IsActionPressed("ability_melee_attack") && MeleeBiteAbility.IsAbilityTimerStopped())
+                if (@event.IsActionPressed("ability_melee_attack") && MeleeBiteAbility.IsAbilityAvailable())
                 {
                     MeleeBiteAbility.TriggerAbility();
                     ChangeToAttack();

@@ -5,5 +5,8 @@
 [node name="AbilityBase" type="Node3D"]
 script = ExtResource("1_wxw54")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AbilityCoolDownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AbilityDurationTimer" type="Timer" parent="."]
 one_shot = true

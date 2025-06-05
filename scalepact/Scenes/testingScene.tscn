@@ -145,6 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9797, 1.15, 4.08789)
 
 [node name="MeleeAttack" parent="Enemies/Enemy/Abilities" index="0"]
 damageAmount = 0.0
+abilityDuration = 0.0
 
 [node name="StateMachine" parent="Enemies/Enemy" index="1" node_paths=PackedStringArray("PatrolPath")]
 PatrolPath = NodePath("../../../Waypoints")
@@ -189,7 +190,6 @@ bones/48/rotation = Quaternion(0.14421, 0.159858, 0.970588, -0.107738)
 bones/49/rotation = Quaternion(-0.0248889, 0.987662, -0.152576, -0.0249961)
 bones/50/rotation = Quaternion(-0.044774, 0.727567, -0.682594, 0.052037)
 bones/51/rotation = Quaternion(-0.020365, 2.17618e-08, -1.02626e-07, 0.999793)
-bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy/RigPivot/Rig/GeneralSkeleton" index="0"]
 transform = Transform3D(0.341996, 0.841464, -0.418304, -0.939496, 0.315497, -0.133452, 0.0196785, 0.438634, 0.89845, 0.225672, 1.35117, -0.0136424)
@@ -241,6 +241,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19112, 1.15, 19.2467)
 
 [node name="MeleeAttack" parent="Enemies/Enemy3/Abilities" index="0"]
 damageAmount = 0.0
+abilityDuration = 0.0
 
 [node name="StateMachine" parent="Enemies/Enemy3" index="1" node_paths=PackedStringArray("WanderArea")]
 WanderArea = NodePath("../../../WanderArea")
@@ -285,7 +286,6 @@ bones/48/rotation = Quaternion(0.14421, 0.159858, 0.970588, -0.107738)
 bones/49/rotation = Quaternion(-0.0248889, 0.987662, -0.152576, -0.0249961)
 bones/50/rotation = Quaternion(-0.044774, 0.727567, -0.682594, 0.052037)
 bones/51/rotation = Quaternion(-0.020365, 2.17618e-08, -1.02626e-07, 0.999793)
-bones/55/rotation = Quaternion(0.227152, 0.131925, -0.615502, 0.743071)
 
 [node name="Item_WarriorSholderArmor" parent="Enemies/Enemy3/RigPivot/Rig/GeneralSkeleton" index="0"]
 transform = Transform3D(0.341996, 0.841464, -0.418304, -0.939496, 0.315497, -0.133452, 0.0196785, 0.438634, 0.89845, 0.225672, 1.35117, -0.0136424)

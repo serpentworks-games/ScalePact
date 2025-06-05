@@ -18,7 +18,7 @@ namespace Scalepact.Player
         {
             base._PhysicsProcess(delta);
 
-            if (!stateMachine.MeleeBiteAbility.IsInAbility &&
+            if (stateMachine.MeleeBiteAbility.IsAbilityDurationTimerStopped() &&
                 !stateMachine.IsOneShotAnimationActive(PlayerStringRefs.PlayerMeleeAttackIsActive))
             {
                 stateMachine.ChangeToGroundMovement();

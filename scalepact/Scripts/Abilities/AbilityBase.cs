@@ -5,52 +5,87 @@ namespace Scalepact.Abilities
     public partial class AbilityBase : Node3D
     {
         [Export] protected float abilityDuration;
-        [Export] protected float abilityCooldownTimer;
+        [Export] protected float abilityCooldownTime;
 
-        public bool IsInAbility { get; private set; }
+        protected bool isInAbility;
 
-        protected float abilityTimeRemaining = Mathf.Inf;
+        protected bool isOnCoolDown;
 
-        protected Timer abilityTimer;
+        protected Timer abilityCoolDownTimer;
+        protected Timer abilityDurationTimer;
 
         public override void _Ready()
         {
-            abilityTimer = GetNode<Timer>("Timer");
+            abilityCoolDownTimer = GetNode<Timer>("AbilityCoolDownTimer");
+            abilityDurationTimer = GetNode<Timer>("AbilityDurationTimer");
+
+            if (abilityCoolDownTimer == null || abilityDurationTimer == null)
+            {
+                GD.PrintErr("Missing one or more timers for this ability!");
+                return;
+            }
+
             base._Ready();
         }
 
-        public virtual void StartAbility() { }
+        public virtual void StartAbility()
+        {
+            abilityDurationTimer.Start(abilityDuration);
+            isInAbility = true;
+        }
+
         public virtual void ProcessAbility() { }
-        public virtual void ResolveAbility() { abilityTimer.Stop(); }
+
+        public virtual void ResolveAbility()
+        {
+            isOnCoolDown = true;
+            abilityCoolDownTimer.Start(abilityCooldownTime);
+
+            isInAbility = false;
+            abilityDurationTimer.Stop();
+        }
+        public virtual void ResetAbility()
+        {
+            abilityCoolDownTimer.Stop();
+            isOnCoolDown = false;
+        }
 
         public void TriggerAbility()
         {
-            if (!abilityTimer.IsStopped() || IsInAbility == true) return;
+            if (isInAbility || isOnCoolDown) return;
             StartAbility();
-            IsInAbility = true;
         }
 
-        public bool IsAbilityTimerStopped()
+        public bool IsAbilityCoolDownTimerStopped()
         {
-            return abilityTimer.IsStopped();
+            return abilityCoolDownTimer.IsStopped();
+        }
+
+        public bool IsAbilityDurationTimerStopped()
+        {
+            return abilityDurationTimer.IsStopped();
+        }
+
+        public bool IsAbilityAvailable()
+        {
+            return !isInAbility && !isOnCoolDown;
+        }
+
+        public void OnAbilityCoolDownTimerEnded()
+        {
+            ResetAbility();
+        }
+
+        public void OnAbilityDurationTimerEnded()
+        {
+            ResolveAbility();
         }
 
         public override void _PhysicsProcess(double delta)
         {
-            if (IsInAbility == false || abilityTimer.IsStopped()) return;
-
-            abilityTimeRemaining -= (float)delta;
-
-            if (abilityTimeRemaining <= 0)
-            {
-                ResolveAbility();
-                GD.Print("Ability Over!");
-                IsInAbility = false;
-            }
-            else
+            if (isInAbility && !isOnCoolDown)
             {
                 ProcessAbility();
-                GD.Print("Is doing ability!");
             }
         }
 
