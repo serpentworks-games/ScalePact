@@ -1,5 +1,6 @@
-Timer
 Node3D
+RootMotionView
+Timer
 CollisionShape3D
 Area3D
 MeshInstance3D
@@ -11,4 +12,3 @@ NavigationRegion3D
 Node
 RayCast3D
 RigidBody3D
-AnimatableBody3D

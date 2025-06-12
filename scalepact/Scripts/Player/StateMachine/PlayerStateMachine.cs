@@ -135,6 +135,7 @@ namespace Scalepact.Player
 
         public Vector3 ApplyVelocityEasing(Vector3 direction, Vector3 velocity, float speedValue, float delta)
         {
+
             velocity.X = UtilityFunctions.ExpDecay(
                 velocity.X,
                 direction.X * speedValue,

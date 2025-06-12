@@ -315,7 +315,6 @@ margin = 0.5
 collision_mask = 4
 debug_shape_custom_color = Color(0.882353, 0, 0, 1)
 script = ExtResource("11_0ae5k")
-damage = 2.0
 selfCollider = NodePath("../..")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
