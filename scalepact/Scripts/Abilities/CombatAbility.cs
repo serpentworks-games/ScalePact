@@ -5,18 +5,24 @@ namespace Scalepact.Abilities
 {
     public partial class CombatAbility : AbilityBase
     {
-        [Export] protected float damageAmount;
+        [Export] protected int damageAmount;
         [Export] protected Damager abilityDamager;
+
+        public override void _Ready()
+        {
+            base._Ready();
+            abilityDamager.SetupDamager(damageAmount, true);
+        }
 
         public override void StartAbility()
         {
-            abilityDamager.DealDamage(damageAmount);
+            abilityDamager.ToggleCollider(true);
             base.StartAbility();
         }
 
         public override void ResolveAbility()
         {
-            abilityDamager.ClearExceptions();
+            abilityDamager.ToggleCollider(false);
             base.ResolveAbility();
         }
 

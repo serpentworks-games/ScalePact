@@ -4,15 +4,15 @@ namespace Scalepact.Abilities
 {
     public partial class AbilityBase : Node3D
     {
-        [Export] protected float abilityDuration;
-        [Export] protected float abilityCooldownTime;
+        [Export] public float abilityDuration;
+        [Export] public float abilityCooldownTime;
 
-        protected bool isInAbility;
+        public bool isInAbility;
 
-        protected bool isOnCoolDown;
+        public bool isOnCoolDown;
 
-        protected Timer abilityCoolDownTimer;
-        protected Timer abilityDurationTimer;
+        public Timer abilityCoolDownTimer;
+        public Timer abilityDurationTimer;
 
         public override void _Ready()
         {

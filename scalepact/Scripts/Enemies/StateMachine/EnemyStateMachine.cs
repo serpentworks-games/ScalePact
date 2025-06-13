@@ -32,7 +32,6 @@ namespace Scalepact.Enemies
         public CollisionShape3D CollisionShape { get; private set; }
         public ShapeCast3D AttackRange { get; private set; }
         public ShapeCast3D ChaseRange { get; private set; }
-        public Damager AttackCollider { get; private set; }
         public NavigationAgent3D Agent3D { get; private set; }
         public CharacterBody3D Body3D { get; private set; }
         public Node3D Rig { get; private set; }
@@ -58,7 +57,6 @@ namespace Scalepact.Enemies
             CollisionShape = GetNode<CollisionShape3D>("../CollisionShape3D");
             AttackRange = GetNode<ShapeCast3D>("../RigPivot/AttackRange");
             ChaseRange = GetNode<ShapeCast3D>("../RigPivot/ChaseRange");
-            AttackCollider = GetNode<Damager>("%MeleeAttackCollider");
             Agent3D = GetNode<NavigationAgent3D>("../NavigationAgent3D");
             Player = GetTree().GetFirstNodeInGroup("Player") as Node3D;
             Body3D = GetParent<CharacterBody3D>();

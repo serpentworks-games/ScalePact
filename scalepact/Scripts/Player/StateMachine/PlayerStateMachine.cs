@@ -26,6 +26,7 @@ namespace Scalepact.Player
         [ExportCategory("Abilities")]
         [Export] public CombatAbility MeleeBiteAbility { get; private set; }
         [Export] public DashAbility DashAbility { get; private set; }
+        [Export] public ProjectileCombatAbility FireBallAbility { get; private set; }
 
         //Public variables
         public Vector3 AttackDirection { get; private set; } = Vector3.Zero;
@@ -86,7 +87,13 @@ namespace Scalepact.Player
                 if (@event.IsActionPressed("ability_melee_attack") && MeleeBiteAbility.IsAbilityAvailable())
                 {
                     MeleeBiteAbility.TriggerAbility();
-                    ChangeToAttack();
+                    ChangeToMeleeAttack();
+                }
+
+                if (@event.IsActionPressed("ability_range_attack") && FireBallAbility.IsAbilityAvailable())
+                {
+                    FireBallAbility.TriggerAbility();
+                    ChangeToRangeAttack();
                 }
             }
 
@@ -95,10 +102,14 @@ namespace Scalepact.Player
         #endregion
 
         #region State Changers
-        public void ChangeToAttack()
+        public void ChangeToMeleeAttack()
         {
             ChangeState(PlayerStringRefs.PlayerAttackState);
             OneShotAnimationRequest(PlayerStringRefs.PlayerMeleeAttackRequest);
+        }
+        public void ChangeToRangeAttack()
+        {
+            ChangeState("RangeAttackState");
         }
         public void ChangeToJump()
         {

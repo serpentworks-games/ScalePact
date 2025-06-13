@@ -6,7 +6,8 @@
 script = ExtResource("1_wxw54")
 
 [node name="AbilityCoolDownTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="AbilityDurationTimer" type="Timer" parent="."]
-one_shot = true
+
+[connection signal="timeout" from="AbilityCoolDownTimer" to="." method="OnAbilityCoolDownTimerEnded"]
+[connection signal="timeout" from="AbilityDurationTimer" to="." method="OnAbilityDurationTimerEnded"]

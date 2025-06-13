@@ -3,59 +3,18 @@ using Scalepact.Utilities;
 
 namespace Scalepact.DamageSystem
 {
-    public partial class AreaDamager : Area3D
+    public partial class AreaDamager : Damager
     {
-        [Export] float damageAmount;
-        [Export] float timeBetweenDamageTriggers;
-        [Export] bool isInstaKill;
+        [Export] int areaDamage;
 
-        bool inArea;
-        float timeSinceLastDamageTrigger;
-
-        public void OnAreaEntered(CharacterBody3D body3D)
+        public override void _Ready()
         {
-            inArea = true;
-
-            if (body3D is EntityAccessor entity)
-            {
-                if (isInstaKill)
-                {
-                    entity.HealthComponent.InstaKill();
-                }
-                entity.HealthComponent.TakeDamage(damageAmount);
-            }
+            SetupAreaDamager();
         }
 
-        public override void _PhysicsProcess(double delta)
+        public void SetupAreaDamager()
         {
-            if (inArea)
-            {
-                for (int i = 0; i < GetOverlappingBodies().Count; i++)
-                {
-                    var bodies = GetOverlappingBodies();
-
-                    if (bodies[i] is EntityAccessor entity)
-                    {
-                        if (isInstaKill)
-                            entity.HealthComponent.InstaKill();
-                        else
-                        {
-                            timeSinceLastDamageTrigger += (float)delta;
-
-                            if (timeSinceLastDamageTrigger > timeBetweenDamageTriggers)
-                            {
-                                timeSinceLastDamageTrigger = 0f;
-                                entity.HealthComponent.TakeDamage(damageAmount);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public void OnAreaExited(CharacterBody3D body3D)
-        {
-            inArea = false;
+            damageAmount = areaDamage;
         }
     }
 }
