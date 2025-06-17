@@ -1,3 +1,5 @@
+res://GameObjects/InteractionSystem
+res://Scripts/InteractionSystem
 res://GameObjects
 res://Animations/Player
 res://Animations/Humanoid

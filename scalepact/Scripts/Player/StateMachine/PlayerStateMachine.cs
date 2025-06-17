@@ -43,6 +43,7 @@ namespace Scalepact.Player
 
         Vector2 inputDir;
 
+
         public override void _Ready()
         {
             PlayerCharBody3D = GetParent<CharacterBody3D>();
@@ -57,9 +58,13 @@ namespace Scalepact.Player
             base._Ready();
         }
 
+        public static bool EnableControl { get; set; } = true;
+
         #region Input
         public override void _UnhandledInput(InputEvent @event)
         {
+            if (!EnableControl) return;
+
             inputDir = Input.GetVector(
                 "move_left", "move_right", "move_forward", "move_backward");
 

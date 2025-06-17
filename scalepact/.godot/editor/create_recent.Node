@@ -1,11 +1,11 @@
-Node3D
-BoneAttachment3D
 MeshInstance3D
 CollisionShape3D
-CharacterBody3D
 Area3D
-RootMotionView
 Timer
+Node3D
+BoneAttachment3D
+CharacterBody3D
+RootMotionView
 Decal
 Marker3D
 ShapeCast3D
