@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://becvrsyjmsapc"]
+
+[ext_resource type="PackedScene" uid="uid://77766kuxvkfe" path="res://GameObjects/InteractionSystem/SenderNodes/SendOnAreaEnter.tscn" id="1_0iw1h"]
+[ext_resource type="PackedScene" uid="uid://dxmh7kdxqis10" path="res://GameObjects/InteractionSystem/SenderNodes/SendOnAreaExit.tscn" id="2_8wxql"]
+[ext_resource type="PackedScene" uid="uid://cy6kxlqi6mhnt" path="res://GameObjects/InteractionSystem/SenderNodes/SendOnKeyPress.tscn" id="3_i6alj"]
+
+[node name="InteractionArea" type="Node3D"]
+editor_description = "Container for the interaction trigger area, senders and actions"
+
+[node name="TriggerArea" type="Area3D" parent="."]
+editor_description = "Trigger area for the interactable. Make sure to set the collision shape and hook up all senders"
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+
+[node name="SendOnAreaEnter" parent="." instance=ExtResource("1_0iw1h")]
+
+[node name="SendOnAreaExit" parent="." instance=ExtResource("2_8wxql")]
+
+[node name="SendOnKeyPress" parent="." instance=ExtResource("3_i6alj")]
+
+[connection signal="body_entered" from="TriggerArea" to="SendOnAreaEnter" method="OnInteractAreaEntered"]
+[connection signal="body_entered" from="TriggerArea" to="SendOnKeyPress" method="OnInteractAreaEntered"]
+[connection signal="body_exited" from="TriggerArea" to="SendOnAreaExit" method="OnInteractAreaExited"]
+[connection signal="body_exited" from="TriggerArea" to="SendOnKeyPress" method="OnInteractAreaExited"]
+
+[editable path="SendOnAreaEnter"]
+[editable path="SendOnAreaExit"]
+[editable path="SendOnKeyPress"]

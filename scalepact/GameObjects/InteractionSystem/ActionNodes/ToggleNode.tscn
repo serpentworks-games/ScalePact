@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cplqhntfne0xg"]
+
+[ext_resource type="Script" uid="uid://cex112bf8flyp" path="res://Scripts/InteractionSystem/Actions/ToggleNodeAction.cs" id="1_odbx8"]
+
+[node name="ToggleNode" type="Node3D" node_paths=PackedStringArray("nodesToToggle")]
+script = ExtResource("1_odbx8")
+nodesToToggle = []

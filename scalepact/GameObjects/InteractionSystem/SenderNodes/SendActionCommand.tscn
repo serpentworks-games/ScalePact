@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://da7lo5s73ophd"]
+
+[ext_resource type="Script" uid="uid://csywnmc4u4ova" path="res://Scripts/InteractionSystem/SendInteractionCommand.cs" id="1_swf8w"]
+[ext_resource type="PackedScene" uid="uid://dmkno7bgolqu7" path="res://GameObjects/InteractionSystem/ActionReceiver.tscn" id="2_6kd1k"]
+
+[node name="SendActionCommand" type="Node3D"]
+script = ExtResource("1_swf8w")
+
+[node name="ActionReceiver" parent="." instance=ExtResource("2_6kd1k")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dveicrniptx02"]
+
+[ext_resource type="Script" uid="uid://bjr66o4ws0k5o" path="res://Scripts/InteractionSystem/Actions/SwitchNodeMaterialAction.cs" id="1_ch37o"]
+
+[node name="SwitchNodeMaterial" type="Node3D" node_paths=PackedStringArray("meshes")]
+script = ExtResource("1_ch37o")
+meshes = []

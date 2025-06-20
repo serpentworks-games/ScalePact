@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8mpa4ccqhsin"]
+
+[ext_resource type="Script" uid="uid://bq8k1udeyu5gt" path="res://Scripts/InteractionSystem/Actions/DebugStringPrinter.cs" id="1_4dv0s"]
+
+[node name="DebugStringPrinter" type="Node3D"]
+script = ExtResource("1_4dv0s")

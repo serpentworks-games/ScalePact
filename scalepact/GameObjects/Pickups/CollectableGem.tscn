@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq7xx8331hux"]
+
+[ext_resource type="Script" uid="uid://73xq7orlkxbb" path="res://Scripts/Gameplay/ItemPickup.cs" id="1_xeoun"]
+[ext_resource type="PackedScene" uid="uid://cssbn5arkgqay" path="res://Art/Props/SM_Prop_Gem_02.fbx" id="2_8ria7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wsf4a"]
+size = Vector3(2, 2, 2)
+
+[node name="CollectableGem" type="Area3D" node_paths=PackedStringArray("pickupMesh")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_xeoun")
+pickupMesh = NodePath("Gem")
+
+[node name="Gem" parent="." instance=ExtResource("2_8ria7")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00017, 0)
+shape = SubResource("BoxShape3D_wsf4a")
