@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk7byt3s5db32"]
+
+[ext_resource type="Script" uid="uid://cn51q5x32qu2o" path="res://Scripts/DamageSystem/Projectile.cs" id="1_c3x1g"]
+[ext_resource type="PackedScene" uid="uid://cqm2hv33616h0" path="res://GameObjects/CombatComponents/Damager.tscn" id="1_vgld0"]
+
+[node name="Projectile" type="CharacterBody3D" node_paths=PackedStringArray("damager")]
+motion_mode = 1
+script = ExtResource("1_c3x1g")
+damager = NodePath("Damager")
+
+[node name="Damager" parent="." node_paths=PackedStringArray("selfCollider") instance=ExtResource("1_vgld0")]
+selfCollider = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[connection signal="body_entered" from="Damager" to="." method="OnDamagerAreaEntered"]
