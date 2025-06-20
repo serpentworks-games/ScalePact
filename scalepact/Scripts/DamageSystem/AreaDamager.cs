@@ -1,5 +1,4 @@
 using Godot;
-using Scalepact.Utilities;
 
 namespace Scalepact.DamageSystem
 {
