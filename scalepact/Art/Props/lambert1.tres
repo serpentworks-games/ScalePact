@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d0buji60wn6qv"]
+
+[resource]
+resource_name = "lambert1"
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(8.27849e-06, 0.724369, 0.967979, 1)
+metallic = 0.41
+roughness = 0.18
+emission_enabled = true
+emission = Color(0, 0.4085, 0.43, 1)
+rim_enabled = true
+rim_tint = 0.27

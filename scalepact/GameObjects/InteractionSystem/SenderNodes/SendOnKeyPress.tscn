@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy6kxlqi6mhnt"]
+
+[ext_resource type="Script" uid="uid://b7p661y6gbikn" path="res://Scripts/InteractionSystem/Senders/SendOnKeyPress.cs" id="1_fakfj"]
+[ext_resource type="PackedScene" uid="uid://dmkno7bgolqu7" path="res://GameObjects/InteractionSystem/ActionReceiver.tscn" id="2_6sepj"]
+
+[node name="SendOnKeyPress" type="Node3D" node_paths=PackedStringArray("InteractionReceiver")]
+script = ExtResource("1_fakfj")
+InteractionReceiver = NodePath("ActionReceiver")
+
+[node name="ActionReceiver" parent="." instance=ExtResource("2_6sepj")]

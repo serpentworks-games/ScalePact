@@ -5,12 +5,19 @@ namespace Scalepact.InteractionSystem
 {
     public partial class InteractionAction : Node3D
     {
+        [Export] public InteractionActionType InteractionActionType { get; private set; } = InteractionActionType.None;
         [Export] public bool IsOneShot { get; private set; } = false;
         [Export] public float ActionStartDelay { get; private set; } = 0;
-        //[Export] public float ActionCooldown { get; private set; } = -1f;
+        [Export] public float ActionCooldown { get; private set; } = 0;
 
-        float timeSinceTriggered = Mathf.Inf;
+        float startTime = 0;
         protected bool isTriggered = false;
+
+        public override void _Ready()
+        {
+            GetNode<InteractionReceiver>("../").Register(InteractionActionType, this);
+        }
+
 
         public virtual void PerformInteraction() { }
 
@@ -20,7 +27,18 @@ namespace Scalepact.InteractionSystem
 
             isTriggered = true;
 
-            ExecuteInteraction();
+            if (ActionCooldown > 0)
+            {
+                if (Time.GetTicksMsec() > startTime + ActionCooldown)
+                {
+                    startTime = Time.GetTicksMsec() + ActionStartDelay;
+                    ExecuteInteraction();
+                }
+            }
+            else
+            {
+                ExecuteInteraction();
+            }
         }
 
         void ExecuteInteraction()

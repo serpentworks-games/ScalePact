@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://domdfdy8roctp"]
-
-[ext_resource type="Script" uid="uid://c4s84d0il552l" path="res://Scripts/InteractionSystem/InteractionAction.cs" id="1_bi36f"]
-
-[node name="InteractionActionBase" type="Node3D"]
-script = ExtResource("1_bi36f")

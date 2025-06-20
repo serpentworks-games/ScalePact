@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://gjsob43nnl3u"]
+
+[ext_resource type="Script" uid="uid://pvdyvp2ee8w5" path="res://Scripts/InteractionSystem/Senders/SendOnAreaEnter.cs" id="1_2au82"]
+[ext_resource type="Script" uid="uid://dp4usblqatrqd" path="res://Scripts/InteractionSystem/InteractionReceiver.cs" id="1_njov2"]
+[ext_resource type="Script" uid="uid://bq8k1udeyu5gt" path="res://Scripts/InteractionSystem/Actions/DebugStringPrinter.cs" id="3_8tn2x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq4fw"]
+
+[node name="InteractionSender" type="Node3D" node_paths=PackedStringArray("InteractionReceiver")]
+script = ExtResource("1_2au82")
+InteractionReceiver = NodePath("InteractionReceiver")
+
+[node name="InteractionReceiver" type="Node3D" parent="."]
+script = ExtResource("1_njov2")
+
+[node name="Area3D" type="Area3D" parent="InteractionReceiver"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionReceiver/Area3D"]
+shape = SubResource("BoxShape3D_aq4fw")
+debug_color = Color(0, 0.7225, 0.85, 0.847059)
+
+[node name="Node3D" type="Node3D" parent="InteractionReceiver"]
+script = ExtResource("3_8tn2x")
+textToPrint = "Testing!"
+
+[connection signal="body_entered" from="InteractionReceiver/Area3D" to="." method="OnInteractAreaEntered"]

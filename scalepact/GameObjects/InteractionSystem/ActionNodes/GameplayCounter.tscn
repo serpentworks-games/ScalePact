@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2r6amo2peslq"]
+
+[ext_resource type="Script" uid="uid://dt5ph6di35awk" path="res://Scripts/InteractionSystem/Actions/GameplayCounter.cs" id="1_otssh"]
+
+[node name="GameplayCounter" type="Node3D" node_paths=PackedStringArray("actionsPerformedOnCounterIncrement", "actionsPerformedOnCounterTargetReached")]
+script = ExtResource("1_otssh")
+actionsPerformedOnCounterIncrement = []
+actionsPerformedOnCounterTargetReached = []

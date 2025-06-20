@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh0nv6u4xfgaj"]
+
+[ext_resource type="Script" uid="uid://cfo6jico3gmho" path="res://Scripts/InteractionSystem/Actions/UpdateObjectiveAction.cs" id="1_rhnri"]
+
+[node name="UpdateObjectiveAction" type="Node3D"]
+script = ExtResource("1_rhnri")
