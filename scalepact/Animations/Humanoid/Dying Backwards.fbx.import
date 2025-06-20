@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpganf8xky8j0"
-path="res://.godot/imported/Stable Sword Outward Slash.fbx-b5a5bb741874472b43625e2be1aac9de.scn"
+uid="uid://dcd15j2dv0ibp"
+path="res://.godot/imported/Dying Backwards.fbx-2ddcb883fc489270b03f56cd3ab75a38.scn"
 
 [deps]
 
-source_file="res://Art/NPCs/Stable Sword Outward Slash.fbx"
-dest_files=["res://.godot/imported/Stable Sword Outward Slash.fbx-b5a5bb741874472b43625e2be1aac9de.scn"]
+source_file="res://Animations/Humanoid/Dying Backwards.fbx"
+dest_files=["res://.godot/imported/Dying Backwards.fbx-2ddcb883fc489270b03f56cd3ab75a38.scn"]
 
 [params]
 
@@ -37,7 +37,7 @@ _subresources={
 "mixamo_com": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Animations/Humanoid/human_attack_sword.res",
+"save_to_file/path": "res://Animations/Humanoid/human_death.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1837,8 +1837,6 @@ _subresources={
 "nodes": {
 "PATH:Skeleton3D": {
 "rest_pose/external_animation_library": null,
-"rest_pose/load_pose": 1,
-"rest_pose/selected_animation": "RESET",
 "retarget/bone_map": Resource("res://Animations/HumanoidBoneMap.tres"),
 "retarget/remove_tracks/unimportant_positions": false
 }
@@ -1846,4 +1844,4 @@ _subresources={
 }
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+fbx/embedded_image_handling=0

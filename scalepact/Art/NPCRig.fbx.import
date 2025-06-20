@@ -1846,7 +1846,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Druid.res"
 },
@@ -1855,7 +1854,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Gypsy.res"
 },
@@ -1864,7 +1862,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Peasant_01.res"
 },
@@ -1873,7 +1870,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Peasant_02.res"
 },
@@ -1882,7 +1878,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Queen.res"
 },
@@ -1891,7 +1886,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Female_Witch.res"
 },
@@ -1900,7 +1894,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_Baird.res"
 },
@@ -1909,7 +1902,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_King.res"
 },
@@ -1918,7 +1910,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_Peasant_01.res"
 },
@@ -1927,7 +1918,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_Rouge_01.res"
 },
@@ -1936,7 +1926,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_Sorcerer.res"
 },
@@ -1945,7 +1934,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Character_Male_Wizard.res"
 },
@@ -1954,7 +1942,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_CoinBag.res"
 },
@@ -1963,7 +1950,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_Dagger.res"
 },
@@ -1972,7 +1958,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_Pouch.res"
 },
@@ -1981,7 +1966,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_Sword.res"
 },
@@ -1990,7 +1974,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_SwordHolder.res"
 },
@@ -1999,7 +1982,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_SwordSheath.res"
 },
@@ -2008,7 +1990,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_WarriorSholderArmor.res"
 },
@@ -2017,7 +1998,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_WarriorSholderArmor1.res"
 },
@@ -2026,7 +2006,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_WaterBladder_01.res"
 },
@@ -2035,7 +2014,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/Item_WaterCanteen.res"
 },
@@ -2044,7 +2022,6 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/SM_Prop_SpellBook_03.res"
 },
@@ -2053,12 +2030,14 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
 "save_to_file/enabled": false,
 "save_to_file/path": "res://Art/NPCs/SM_Prop_Vials.res"
 }
 },
 "nodes": {
+"PATH:AnimationPlayer": {
+"import/skip_import": true
+},
 "PATH:Skeleton3D": {
 "rest_pose/external_animation_library": null,
 "retarget/bone_map": Resource("res://Animations/HumanoidBoneMap.tres"),

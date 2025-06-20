@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dcd15j2dv0ibp"
-path="res://.godot/imported/Dying Backwards.fbx-7906758dd37fcccd7865160fa111565d.scn"
+uid="uid://kmwhqayd027v"
+path="res://.godot/imported/Neutral Idle.fbx-72cb7c299fd1091ff1208f4cb10a2c34.scn"
 
 [deps]
 
-source_file="res://Art/NPCs/Dying Backwards.fbx"
-dest_files=["res://.godot/imported/Dying Backwards.fbx-7906758dd37fcccd7865160fa111565d.scn"]
+source_file="res://Animations/Humanoid/Neutral Idle.fbx"
+dest_files=["res://.godot/imported/Neutral Idle.fbx-72cb7c299fd1091ff1208f4cb10a2c34.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=true
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=true
 import_script/path=""
 _subresources={
@@ -37,8 +37,8 @@ _subresources={
 "mixamo_com": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Animations/Humanoid/human_death.res",
-"settings/loop_mode": 0,
+"save_to_file/path": "res://Animations/human_idle.res",
+"settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -1837,6 +1837,8 @@ _subresources={
 "nodes": {
 "PATH:Skeleton3D": {
 "rest_pose/external_animation_library": null,
+"rest_pose/load_pose": 1,
+"rest_pose/selected_animation": "RESET",
 "retarget/bone_map": Resource("res://Animations/HumanoidBoneMap.tres"),
 "retarget/remove_tracks/unimportant_positions": false
 }

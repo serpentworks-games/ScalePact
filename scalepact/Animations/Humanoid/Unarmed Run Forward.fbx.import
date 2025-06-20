@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kmwhqayd027v"
-path="res://.godot/imported/Neutral Idle.fbx-04945767080b3367508b5440686bd223.scn"
+uid="uid://b0ynwetai2itp"
+path="res://.godot/imported/Unarmed Run Forward.fbx-3018a67f99381ef2a00adda0ecbf9811.scn"
 
 [deps]
 
-source_file="res://Art/NPCs/Neutral Idle.fbx"
-dest_files=["res://.godot/imported/Neutral Idle.fbx-04945767080b3367508b5440686bd223.scn"]
+source_file="res://Animations/Humanoid/Unarmed Run Forward.fbx"
+dest_files=["res://.godot/imported/Unarmed Run Forward.fbx-3018a67f99381ef2a00adda0ecbf9811.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=true
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=true
 import_script/path=""
 _subresources={
@@ -37,7 +37,7 @@ _subresources={
 "mixamo_com": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Animations/human_idle.res",
+"save_to_file/path": "res://Animations/Humanoid/human_run.res",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1846,4 +1846,4 @@ _subresources={
 }
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=0
+fbx/embedded_image_handling=1

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0ynwetai2itp"
-path="res://.godot/imported/Unarmed Run Forward.fbx-41bad7084689a6ca814e694a133a59cd.scn"
+uid="uid://caffelmffuvtj"
+path="res://.godot/imported/Standing 1H Magic Attack 01.fbx-ba63e944e365a728aedcbca5eacd9ffe.scn"
 
 [deps]
 
-source_file="res://Art/NPCs/Unarmed Run Forward.fbx"
-dest_files=["res://.godot/imported/Unarmed Run Forward.fbx-41bad7084689a6ca814e694a133a59cd.scn"]
+source_file="res://Animations/Humanoid/Standing 1H Magic Attack 01.fbx"
+dest_files=["res://.godot/imported/Standing 1H Magic Attack 01.fbx-ba63e944e365a728aedcbca5eacd9ffe.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=true
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=true
 import_script/path=""
 _subresources={
@@ -37,8 +37,8 @@ _subresources={
 "mixamo_com": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Animations/Humanoid/human_run.res",
-"settings/loop_mode": 1,
+"save_to_file/path": "res://Animations/Humanoid/human_attack_ranged_magic.res",
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -1836,11 +1836,9 @@ _subresources={
 },
 "nodes": {
 "PATH:Skeleton3D": {
-"rest_pose/external_animation_library": null,
 "rest_pose/load_pose": 1,
 "rest_pose/selected_animation": "RESET",
-"retarget/bone_map": Resource("res://Animations/HumanoidBoneMap.tres"),
-"retarget/remove_tracks/unimportant_positions": false
+"retarget/bone_map": Resource("res://Animations/HumanoidBoneMap.tres")
 }
 }
 }
