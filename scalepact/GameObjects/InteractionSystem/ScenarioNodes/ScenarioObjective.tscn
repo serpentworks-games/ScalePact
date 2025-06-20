@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hpr4xtxom264"]
+
+[ext_resource type="Script" uid="uid://bh5mhfubhqhfd" path="res://Scripts/InteractionSystem/ScenarioHandlers/ScenarioObjective.cs" id="1_ov8vk"]
+[ext_resource type="PackedScene" uid="uid://da7lo5s73ophd" path="res://GameObjects/InteractionSystem/SenderNodes/SendActionCommand.tscn" id="2_xldh1"]
+
+[node name="ScenarioObjective" type="Node3D" node_paths=PackedStringArray("SendOnObjectiveProgressed", "SendOnObjectiveCompleted")]
+editor_description = "An objective that is tracked by the scenario controller."
+script = ExtResource("1_ov8vk")
+ObjectiveName = "TestObjective"
+ObjectiveRequiredCount = 1
+SendOnObjectiveProgressed = NodePath("SendOnObjectiveProgressUpdate")
+SendOnObjectiveCompleted = NodePath("SendOnObjectiveCompleted")
+
+[node name="SendOnObjectiveProgressUpdate" parent="." node_paths=PackedStringArray("InteractionReceiver") instance=ExtResource("2_xldh1")]
+InteractionReceiver = NodePath("ActionReceiver")
+
+[node name="SendOnObjectiveCompleted" parent="." node_paths=PackedStringArray("InteractionReceiver") instance=ExtResource("2_xldh1")]
+InteractionReceiver = NodePath("ActionReceiver")

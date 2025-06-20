@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c01xcnwb0rf8w"]
+
+[ext_resource type="PackedScene" uid="uid://ws41u2pj3csp" path="res://GameObjects/AbilityNodes/AbilityBase.tscn" id="1_7sh44"]
+[ext_resource type="Script" uid="uid://di0w564vv7nul" path="res://Scripts/Abilities/ProjectileCombatAbility.cs" id="2_p5gd3"]
+
+[node name="ProjectileAbility" instance=ExtResource("1_7sh44")]
+script = ExtResource("2_p5gd3")
+damageAmount = 0
+projectileScene = null
