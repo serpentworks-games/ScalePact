@@ -1,3 +1,4 @@
+using Godot;
 using Scalepact.Core;
 
 namespace Scalepact.StateMachines.Player
@@ -18,17 +19,25 @@ namespace Scalepact.StateMachines.Player
 		{
 			GetVelocityAndDirection();
 
-			velocity = stateMachine.ResolveMovementPhysics(
-				direction, velocity, stateMachine.MoveSpeed, (float)delta);
+			velocity = stateMachine.AddGravity(velocity, (float)delta);
 
-			GroundedCharacterMovement(velocity, delta);
+			velocity = stateMachine.ApplyMovement(direction, velocity, stateMachine.MoveSpeed, (float)delta);
 
-			stateMachine.UpdateMovementBlendValue(
-				PlayerStringRefs.PlayerMoveBlendValue,
-				(float)velocity.Length(),
-				stateMachine.AnimBlendWeight,
-				(float)delta
-			);
+			stateMachine.PlayerCharBody3D.Velocity = velocity;
+
+			stateMachine.PlayerCharBody3D.MoveAndSlide();
+
+			if (stateMachine.PlayerCharBody3D.Velocity.X == 0 && stateMachine.PlayerCharBody3D.Velocity.Z == 0)
+			{
+				stateMachine.UpdateMovementBlendValue(
+					PlayerStringRefs.PlayerMoveBlendValue, 0, stateMachine.AnimBlendWeight, (float)delta);
+			}
+			else
+			{
+				stateMachine.UpdateMovementBlendValue(
+					PlayerStringRefs.PlayerMoveBlendValue, 1, stateMachine.AnimBlendWeight, (float)delta);
+			}
+
 		}
 
 		public override void ExitState()
