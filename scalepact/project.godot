@@ -20,6 +20,15 @@ run/main_scene="res://Scenes/testingScene.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GUIDE="*res://addons/guide/guide.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+runtime/advanced/uses_dotnet=true
+
 [display]
 
 window/size/viewport_width=1280
@@ -32,6 +41,10 @@ project/assembly_name="scalepact"
 [editor]
 
 naming/scene_name_casing=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SceneBuilder/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/terrabrush/plugin.cfg", "res://addons/unidot_importer/plugin.cfg")
 
 [global_group]
 
