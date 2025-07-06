@@ -16,18 +16,22 @@ namespace Scalepact.StateMachines.Player
         {
             GetVelocityAndDirection();
 
-            velocity = stateMachine.ApplyJumpVelocity(velocity);
+            velocity = stateMachine.AddGravity(velocity, (float)delta);
 
-            velocity = stateMachine.ResolveMovementPhysics(
-                            direction, velocity, stateMachine.JumpMoveSpeed, (float)delta);
+            velocity = stateMachine.HandleJump(velocity);
 
-            AerialCharacterMovement(velocity, delta);
+            velocity = stateMachine.ApplyMovement(direction, velocity, stateMachine.MoveSpeed, (float)delta);
 
-            if (stateMachine.PlayerCharBody3D.IsOnFloor())
+            stateMachine.PlayerCharBody3D.Velocity = velocity;
+
+            stateMachine.PlayerCharBody3D.MoveAndSlide();
+
+            if (stateMachine.WasOnFloor)
             {
                 stateMachine.ChangeToGroundMovement();
                 return;
             }
+
         }
 
         public override void ExitState()

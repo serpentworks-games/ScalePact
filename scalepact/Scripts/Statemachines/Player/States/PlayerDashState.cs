@@ -22,10 +22,17 @@ namespace Scalepact.StateMachines.Player
 
             GetVelocityAndDirection();
 
-            velocity = stateMachine.ResolveMovementPhysics(
-               direction, velocity, stateMachine.MoveSpeed * stateMachine.DashAbility.DashSpeedBoost, (float)delta);
+            velocity = stateMachine.AddGravity(velocity, (float)delta);
 
-            GroundedCharacterMovement(velocity, delta);
+            velocity = stateMachine.ApplyMovement(
+                direction,
+                velocity,
+                stateMachine.MoveSpeed * stateMachine.DashAbility.DashSpeedBoost,
+                (float)delta);
+
+            stateMachine.PlayerCharBody3D.Velocity = velocity;
+
+            stateMachine.PlayerCharBody3D.MoveAndSlide();
         }
 
         public override void ExitState()

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2beo6l8g7l6r"]
+
+[ext_resource type="Script" uid="uid://dbd3lv4lxjudj" path="res://TestBetterJumpin.cs" id="1_64k4p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_64k4p"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_v57jl"]
+sky_material = SubResource("ProceduralSkyMaterial_64k4p")
+
+[sub_resource type="Environment" id="Environment_qypcy"]
+background_mode = 2
+sky = SubResource("Sky_v57jl")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_v57jl"]
+size = Vector3(25, 0.1, 25)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qypcy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2nbpf"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qypcy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("BoxMesh_v57jl")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_64k4p")
+jumpVelocity = 20.0
+mesh = NodePath("MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_qypcy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_2nbpf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999998, -0.0011386, 0.00137123, 0, 0.76935, 0.638828, -0.00178233, 0.638826, -0.769349, -0.649645, 8.93626, -14.9697)

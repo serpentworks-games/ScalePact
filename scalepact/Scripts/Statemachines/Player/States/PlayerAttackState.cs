@@ -27,10 +27,13 @@ namespace Scalepact.StateMachines.Player
 
             GetVelocityAndDirection();
 
+            velocity = stateMachine.AddGravity(velocity, (float)delta);
+
             velocity = stateMachine.ApplyAttackMovement(
                 direction, velocity, stateMachine.MeleeAttackMoveSpeed, (float)delta);
+            stateMachine.PlayerCharBody3D.Velocity = velocity;
 
-            GroundedCharacterMovement(velocity, delta);
+            stateMachine.PlayerCharBody3D.MoveAndSlide();
 
         }
 

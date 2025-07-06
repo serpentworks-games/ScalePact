@@ -1,13 +1,9 @@
-res://Animations/RESET.res
-res://Animations/Humanoid/human_death.res
-res://Animations/human_idle.res
-res://Animations/Humanoid/human_attack_sword.res
-res://Animations/Humanoid/human_attack_ranged_magic.res
-res://Animations/Humanoid/human_run.res
-res://GameObjects/Characters/BaseEnemy.tscn
+res://Scenes/testingScene.tscn
 res://Art/Player/Materials/DragonBody.tres
 res://Art/NPCMat.tres
-res://Scenes/testingScene.tscn
+res://GameObjects/Characters/BaseEnemy.tscn
+res://Test2.tscn
+res://GameObjects/Characters/Player.tscn
 res://Scripts/Statemachines/Player/States/PlayerDeathState.cs
 res://Scripts/Core/EnemyEntityAccessor.cs
 res://Scripts/InteractionSystem/Senders/SendOnAreaExit.cs
@@ -27,6 +23,7 @@ res://Scripts/DamageSystem/HealthComponent.cs
 res://Scripts/InteractionSystem/Senders/SendOnKeyPress.cs
 res://Scripts/Statemachines/Player/States/PlayerJumpState.cs
 res://Scripts/Statemachines/Enemies/States/EnemyBaseState.cs
+res://TestBetterJumpin.cs
 res://Scripts/Statemachines/Enemies/States/EnemyAttackState.cs
 res://Scripts/InteractionSystem/SendInteractionCommand.cs
 res://Scripts/DamageSystem/Projectile.cs
